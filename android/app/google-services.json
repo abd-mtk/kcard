@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "747352638007",
+    "project_id": "kcard-90955",
+    "storage_bucket": "kcard-90955.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747352638007:android:5afc38970d5ccb1db035b2",
+        "android_client_info": {
+          "package_name": "com.kcard.kcard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjGGXdyc-QeF9BSSB6v1A1M7DK2Uq8PkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
