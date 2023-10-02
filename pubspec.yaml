@@ -1,6 +1,6 @@
 name: kcard
-description: Evaiation Task.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+description: Personal Finance Tracker App.
+publish_to: 'none' 
 
 version: 1.0.0+1
 
@@ -23,6 +23,13 @@ dependencies:
   contained_tab_bar_view: ^0.8.0
   buttons_tabbar: ^1.3.7+1
   gap: ^3.0.1
+  get: ^4.6.6
+  grouped_list: ^5.1.2
+  fl_chart: ^0.63.0
+  auto_size_text: ^3.0.0
+  zoom_tap_animation: ^1.1.0
+  introduction_screen: ^3.1.11
+  omni_datetime_picker: ^1.0.9
 
 dev_dependencies:
   flutter_test:
