@@ -17,13 +17,12 @@ abstract class AuthRemoteDataSource {
 }
 
 class RemoteDataSourceImplement implements AuthRemoteDataSource {
-  final String uid;
-  const RemoteDataSourceImplement(this.uid);
+  const RemoteDataSourceImplement();
 
   @override
-  Future<Unit> login(AuthModel auth) {
+  Future<Unit> login(AuthModel auth) async {
     try {
-      FirebaseAuth.instance.signInWithEmailAndPassword(
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: auth.email, password: auth.password);
       return Future.value(unit);
     } on FirebaseAuthException catch (error) {
@@ -41,16 +40,18 @@ class RemoteDataSourceImplement implements AuthRemoteDataSource {
   }
 
   @override
-  Future<Unit> logout() {
-    FirebaseAuth.instance.signOut();
+  Future<Unit> logout() async {
+    await FirebaseAuth.instance.signOut();
     return Future.value(unit);
   }
 
   @override
-  Future<Unit> register(AuthModel auth) {
+  Future<Unit> register(AuthModel auth) async {
     try {
-      FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: auth.email, password: auth.password);
+      await FirebaseAuth.instance.currentUser?.sendEmailVerification();
+
       return Future.value(unit);
     } on FirebaseAuthException catch (error) {
       if (error.code == 'weak-password') {
@@ -65,9 +66,10 @@ class RemoteDataSourceImplement implements AuthRemoteDataSource {
   }
 
   @override
-  Future<Unit> saveUserInformation(UserModel user) {
+  Future<Unit> saveUserInformation(UserModel user) async {
+    final uid = FirebaseAuth.instance.currentUser!.uid;
     try {
-      FirebaseFirestore.instance
+      await FirebaseFirestore.instance
           .collection("Users")
           .doc(uid)
           .collection("Information")
@@ -84,9 +86,11 @@ class RemoteDataSourceImplement implements AuthRemoteDataSource {
   }
 
   @override
-  Future<Unit> updateUserInformation(UserModel user) {
+  Future<Unit> updateUserInformation(UserModel user) async {
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+
     try {
-      FirebaseFirestore.instance
+      await FirebaseFirestore.instance
           .collection("Users")
           .doc(uid)
           .collection("Information")
@@ -104,9 +108,11 @@ class RemoteDataSourceImplement implements AuthRemoteDataSource {
   }
 
   @override
-  Future<Unit> deleteUserInformation() {
+  Future<Unit> deleteUserInformation() async {
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+
     try {
-      FirebaseFirestore.instance.collection("Users").doc(uid).delete();
+      await FirebaseFirestore.instance.collection("Users").doc(uid).delete();
       return Future.value(unit);
     } on FirebaseException catch (error) {
       if (kDebugMode) {
