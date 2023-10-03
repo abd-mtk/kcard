@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:fpdart/fpdart.dart';
-import 'package:kcard/features/auth/domain/entities/auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../app/errors/auth/excptions.dart';
+import '../../../domain/entities/auth.dart';
 import '../../models/auth_model.dart';
 
 abstract class AuthLocalDataSource {
@@ -14,7 +14,6 @@ abstract class AuthLocalDataSource {
 }
 
 const String cachedAuthUser = "CACHED_AUTH_USER";
-const String cachedUser = "CACHED_USER";
 
 class LocalDataSourceImplement implements AuthLocalDataSource {
   final SharedPreferences sharedPreferences;

@@ -12,7 +12,6 @@ abstract class UserLocalDataSource {
   Future<User> getUser();
 }
 
-const String cachedAuthUser = "CACHED_AUTH_USER";
 const String cachedUser = "CACHED_USER";
 
 class LocalDataSourceImplement implements UserLocalDataSource {
