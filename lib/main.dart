@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       initialRoute: WelcomeScreen.routeName,
       initialBinding: AuthBinding(),
       getPages: [
-        ...AUTH_PAGES,
+        ...AUTH,
       ],
     );
   }

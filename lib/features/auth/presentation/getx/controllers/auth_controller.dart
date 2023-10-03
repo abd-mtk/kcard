@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kcard/features/auth/domain/use%20cases/logout.dart';
@@ -28,14 +29,20 @@ class AuthController extends GetxController {
       isLoading.value = false;
       results.fold((left) {
         Get.snackbar('Error', 'Error');
-        print(left.runtimeType);
+        if (kDebugMode) {
+          print(left.runtimeType);
+        }
       }, (right) {
         // Get.offAllNamed('/home');
-        print("ok");
+        if (kDebugMode) {
+          print("ok");
+        }
       });
     } catch (error) {
       Get.snackbar('Error', 'Error');
-      print(error.runtimeType);
+      if (kDebugMode) {
+        print(error.runtimeType);
+      }
     }
   }
 
@@ -47,14 +54,20 @@ class AuthController extends GetxController {
       isLoading.value = false;
       results.fold((left) {
         Get.snackbar('Error', 'Error');
-        print(left.runtimeType);
+        if (kDebugMode) {
+          print(left.runtimeType);
+        }
       }, (right) {
         // Get.offAllNamed(RegisterScreen.routeName);
-        print("email send");
+        if (kDebugMode) {
+          print("email send");
+        }
       });
     } catch (error) {
       Get.snackbar('Error', 'Error');
-      print(error.runtimeType);
+      if (kDebugMode) {
+        print(error.runtimeType);
+      }
     }
   }
 
@@ -65,13 +78,17 @@ class AuthController extends GetxController {
       isLoading.value = false;
       results.fold((left) {
         Get.snackbar('Error', 'Error');
-        print(left.runtimeType);
+        if (kDebugMode) {
+          print(left.runtimeType);
+        }
       }, (right) {
         Get.offAllNamed('/welcomeScreen');
       });
     } catch (error) {
       Get.snackbar('Error', 'Error');
-      print(error.runtimeType);
+      if (kDebugMode) {
+        print(error.runtimeType);
+      }
     }
   }
 }

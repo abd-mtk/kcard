@@ -4,12 +4,10 @@ import '../../../../app/errors/auth/excptions.dart';
 import '../../../../app/errors/auth/failures.dart';
 import '../../../../app/utils/resources/network_info.dart';
 import '../../domain/entities/auth.dart';
-import '../../domain/entities/user.dart';
 import '../../domain/repositories/auth_repositories.dart';
 import '../data sources/local/auth_local_data_source.dart';
 import '../data sources/remote/auth_remot_data_source.dart';
 import '../models/auth_model.dart';
-import '../models/user_model.dart';
 
 class AuthRepositoryImplement implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;
@@ -73,75 +71,6 @@ class AuthRepositoryImplement implements AuthRepository {
       }
     } else {
       return Left(AuthEmptyCacheFailure());
-    }
-  }
-
-  @override
-  Future<Either<AuthFailure, User>> addUserInformation(User params) async {
-    if (await networkInfo.isConnected) {
-      try {
-        await remoteDataSource.saveUserInformation(UserModel(
-            name: params.name,
-            nickname: params.nickname,
-            age: params.age,
-            jobtitle: params.jobtitle,
-            hoursperweek: params.hoursperweek,
-            salary: params.salary));
-        await localDataSource.cacheUser(UserModel(
-            name: params.name,
-            nickname: params.nickname,
-            age: params.age,
-            jobtitle: params.jobtitle,
-            hoursperweek: params.hoursperweek,
-            salary: params.salary));
-        return Right(params);
-      } on AddUserInformationException {
-        return Left(AddUserInfoFailure());
-      }
-    } else {
-      return Left(NetworkFailure());
-    }
-  }
-
-  @override
-  Future<Either<AuthFailure, Unit>> deleteUserInformation(User params) async {
-    if (await networkInfo.isConnected) {
-      try {
-        await remoteDataSource.deleteUserInformation();
-        await localDataSource.deleteUser();
-        return const Right(unit);
-      } on DeleteUserInformationException {
-        return Left(DeleteUserInfoFailure());
-      }
-    } else {
-      return Left(NetworkFailure());
-    }
-  }
-
-  @override
-  Future<Either<AuthFailure, User>> updateUserInformation(User params) async {
-    if (await networkInfo.isConnected) {
-      try {
-        await remoteDataSource.updateUserInformation(UserModel(
-            name: params.name,
-            nickname: params.nickname,
-            age: params.age,
-            jobtitle: params.jobtitle,
-            hoursperweek: params.hoursperweek,
-            salary: params.salary));
-        await localDataSource.cacheUser(UserModel(
-            name: params.name,
-            nickname: params.nickname,
-            age: params.age,
-            jobtitle: params.jobtitle,
-            hoursperweek: params.hoursperweek,
-            salary: params.salary));
-        return Right(params);
-      } on UpdateUserInformationException {
-        return Left(UpdateUserInfoFailure());
-      }
-    } else {
-      return Left(NetworkFailure());
     }
   }
 }
