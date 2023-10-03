@@ -2,6 +2,11 @@ import 'package:equatable/equatable.dart';
 
 abstract class AuthFailure extends Equatable {}
 
+class NetworkFailure extends AuthFailure {
+  @override
+  List<Object?> get props => [];
+}
+
 class AuthServerFailure extends AuthFailure {
   @override
   List<Object?> get props => [];
@@ -33,6 +38,21 @@ class AuthWrongPasswordFailure extends AuthFailure {
 }
 
 class AuthEmailNotVerifiedFailure extends AuthFailure {
+  @override
+  List<Object?> get props => [];
+}
+
+class AddUserInfoFailure extends AuthFailure {
+  @override
+  List<Object?> get props => [];
+}
+
+class DeleteUserInfoFailure extends AuthFailure {
+  @override
+  List<Object?> get props => [];
+}
+
+class UpdateUserInfoFailure extends AuthFailure {
   @override
   List<Object?> get props => [];
 }

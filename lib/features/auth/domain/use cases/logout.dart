@@ -1,4 +1,5 @@
 import 'package:fpdart/fpdart.dart';
+import '../../../../app/errors/auth/failures.dart';
 import '../repositories/auth_repositories.dart';
 
 
@@ -7,7 +8,7 @@ class LogoutUseCase {
 
   LogoutUseCase(this._authRepository);
 
-  Future<Unit> call() async {
+  Future<Either<AuthFailure, Unit>> call() async {
     return await _authRepository.logout();
   }
 }

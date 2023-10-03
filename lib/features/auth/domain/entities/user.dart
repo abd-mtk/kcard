@@ -1,14 +1,14 @@
 import 'package:equatable/equatable.dart';
 
 class User extends Equatable {
-  String name;
-  String? nickname;
-  String? jobtitle;
-  String? hoursperweek;
-  double salary;
-  int? age;
+  final String name;
+  final String? nickname;
+  final String? jobtitle;
+  final String? hoursperweek;
+  final double salary;
+  final int? age;
 
-  User({
+  const User({
     required this.name,
     this.nickname,
     this.jobtitle,

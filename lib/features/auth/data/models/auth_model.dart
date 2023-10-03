@@ -1,7 +1,7 @@
 import '../../domain/entities/auth.dart';
 
 class AuthModel extends Auth{
-  AuthModel({required super.email, required super.password});
+  const AuthModel({required super.email, required super.password});
 
   factory AuthModel.fromJson(Map<String, dynamic> json) {
     return AuthModel(
