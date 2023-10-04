@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:kcard/app/errors/auth/failures.dart';
 
+import '../../../../app/errors/user/failures.dart';
 import '../entities/user.dart';
 import '../repositories/user_repositories.dart';
 
@@ -9,7 +9,7 @@ class AddUserInformationUseCase {
 
   AddUserInformationUseCase(this.repository);
 
-  Future<Either<AuthFailure, User>> call(User params) async {
+  Future<Either<UserFailure, User>> call(User params) async {
     return await repository.addUserInformation(params);
   }
 }

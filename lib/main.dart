@@ -1,13 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kcard/features/auth/presentation/getx/Bindings/auth_binding.dart';
 
-import 'app/config/router/auth/auth_routes.dart';
-import 'app/config/themes/dark_theme.dart';
-import 'app/config/themes/light_theme.dart';
-import 'app/utils/resources/services.dart';
-import 'features/auth/presentation/screens/welcome_screen.dart';
+import 'imports.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +30,7 @@ class MyApp extends StatelessWidget {
       initialBinding: AuthBinding(),
       getPages: [
         ...AUTH,
+        ...USER,
       ],
     );
   }

@@ -5,12 +5,12 @@ import '../../../../app/errors/user/failures.dart';
 import '../entities/user.dart';
 import '../repositories/user_repositories.dart';
 
-class UpadetUserInformationUseCase {
+class GetUserInformationUseCase {
   final UserRepository repository;
 
-  UpadetUserInformationUseCase(this.repository);
+  GetUserInformationUseCase(this.repository);
 
-  Future<Either<UserFailure, User>> call(User params) async {
-    return await repository.updateUserInformation(params);
+  Future<Either<UserFailure, User>> call() async {
+    return await repository.getUserInformation();
   }
 }

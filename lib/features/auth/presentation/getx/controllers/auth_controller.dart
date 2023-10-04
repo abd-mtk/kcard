@@ -1,11 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kcard/features/auth/domain/use%20cases/logout.dart';
-import 'package:kcard/features/auth/domain/use%20cases/register.dart';
 
+import '../../../../user/presentation/screens/profile_screen.dart';
 import '../../../domain/entities/auth.dart';
 import '../../../domain/use cases/login.dart';
+import '../../../domain/use cases/logout.dart';
+import '../../../domain/use cases/register.dart';
+import '../../screens/login_screen.dart';
+import '../../screens/welcome_screen.dart';
 
 class AuthController extends GetxController {
   TextEditingController emailController = TextEditingController();
@@ -33,7 +36,7 @@ class AuthController extends GetxController {
           print(left.runtimeType);
         }
       }, (right) {
-        // Get.offAllNamed('/home');
+        Get.offAllNamed(ProfileScreen.routeName);
         if (kDebugMode) {
           print("ok");
         }
@@ -58,7 +61,7 @@ class AuthController extends GetxController {
           print(left.runtimeType);
         }
       }, (right) {
-        // Get.offAllNamed(RegisterScreen.routeName);
+        Get.offAllNamed(LoginScreen.routeName);
         if (kDebugMode) {
           print("email send");
         }
@@ -82,7 +85,7 @@ class AuthController extends GetxController {
           print(left.runtimeType);
         }
       }, (right) {
-        Get.offAllNamed('/welcomeScreen');
+        Get.offAllNamed(WelcomeScreen.routeName);
       });
     } catch (error) {
       Get.snackbar('Error', 'Error');

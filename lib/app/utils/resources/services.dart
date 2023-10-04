@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:kcard/features/auth/data/data%20sources/local/auth_local_data_source.dart';
-import 'package:kcard/features/auth/data/data%20sources/remote/auth_remot_data_source.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../features/auth/data/data sources/local/auth_local_data_source.dart';
+import '../../../features/auth/data/data sources/remote/auth_remot_data_source.dart';
 import 'network_info.dart';
 
 class Services extends GetxService {

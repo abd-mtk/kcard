@@ -13,6 +13,7 @@ abstract class AuthLocalDataSource {
   Future<Auth> getAuthUser();
 }
 
+
 const String cachedAuthUser = "CACHED_AUTH_USER";
 
 class LocalDataSourceImplement implements AuthLocalDataSource {

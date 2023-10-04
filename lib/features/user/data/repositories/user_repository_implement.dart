@@ -1,7 +1,7 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../app/errors/auth/excptions.dart';
-import '../../../../app/errors/auth/failures.dart';
+import '../../../../app/errors/user/excptions.dart';
+import '../../../../app/errors/user/failures.dart';
 import '../../../../app/utils/resources/network_info.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/user_repositories.dart';
@@ -21,7 +21,7 @@ class UserRepositoryImplement implements UserRepository {
   });
 
   @override
-  Future<Either<AuthFailure, User>> addUserInformation(User params) async {
+  Future<Either<UserFailure, User>> addUserInformation(User params) async {
     if (await networkInfo.isConnected) {
       try {
         await remoteDataSource.saveUserInformation(UserModel(
@@ -48,7 +48,7 @@ class UserRepositoryImplement implements UserRepository {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> deleteUserInformation(User params) async {
+  Future<Either<UserFailure, Unit>> deleteUserInformation(User params) async {
     if (await networkInfo.isConnected) {
       try {
         await remoteDataSource.deleteUserInformation();
@@ -63,7 +63,7 @@ class UserRepositoryImplement implements UserRepository {
   }
 
   @override
-  Future<Either<AuthFailure, User>> updateUserInformation(User params) async {
+  Future<Either<UserFailure, User>> updateUserInformation(User params) async {
     if (await networkInfo.isConnected) {
       try {
         await remoteDataSource.updateUserInformation(UserModel(
@@ -86,6 +86,32 @@ class UserRepositoryImplement implements UserRepository {
       }
     } else {
       return Left(NetworkFailure());
+    }
+  }
+
+  @override
+  Future<Either<UserFailure, User>> getUserInformation() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final User user = await remoteDataSource.getUserInformation();
+        await localDataSource.cacheUser(UserModel(
+            name: user.name,
+            nickname: user.nickname,
+            age: user.age,
+            jobtitle: user.jobtitle,
+            hoursperweek: user.hoursperweek,
+            salary: user.salary));
+        return Right(user);
+      } on GetUserInformationException {
+        return Left(GetUserInformationFailure());
+      }
+    } else {
+      try {
+        final user = await localDataSource.getUser();
+        return Right(user);
+      } on CacheUserException {
+        return Left(GetUserInformationFailure());
+      }
     }
   }
 }

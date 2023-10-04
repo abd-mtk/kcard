@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../app/utils/resources/services.dart';
-import '../../../../user/presentation/screens/home_screen.dart';
+import '../../../../home/screens/home_screen.dart';
 import '../../../data/data sources/local/auth_local_data_source.dart';
 
 class AuthMiddleware extends GetMiddleware {

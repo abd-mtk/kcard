@@ -70,7 +70,7 @@ class AuthRepositoryImplement implements AuthRepository {
         return Left(AuthServerFailure());
       }
     } else {
-      return Left(AuthEmptyCacheFailure());
+      return Left(NetworkFailure());
     }
   }
 }
