@@ -7,14 +7,14 @@ import '../../../../../app/errors/excptions.dart';
 import '../../../domain/entities/budget.dart';
 import '../../models/budget_model.dart';
 
-abstract class BudgetLocalDataSourced {
+abstract class BudgetLocalDataSource {
   Future<Budget> getBudget();
   Future<Unit> cacheBudget(BudgetModel budget);
 }
 
 const String cachedBudget = 'CACHED_BUDGET';
 
-class BudgetLocalDataSourceImplement implements BudgetLocalDataSourced {
+class BudgetLocalDataSourceImplement implements BudgetLocalDataSource {
   final SharedPreferences sharedPreferences;
 
   BudgetLocalDataSourceImplement({required this.sharedPreferences});
