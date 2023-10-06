@@ -1,105 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+
+import '../getx/controllers/profile_controller.dart';
+import '../widgets/profile_buttons.dart';
+import '../widgets/profile_card.dart';
 
 class ProfileScreen extends StatelessWidget {
   static const String routeName = '/profile';
+  final ProfileController profileController = Get.find<ProfileController>();
 
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: Get.height * 0.35,
-          color: Colors.blueGrey,
-          child: const Center(
-            child: Text(
-              'Profile Screen',
-              style: TextStyle(
-                fontSize: 30,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ),
-        const Divider(
-          thickness: 2,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            ZoomTapAnimation(
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      'assets/images/edit.png',
-                      width: Get.width * 0.25,
-                      height: Get.width * 0.25,
-                    ),
-                    const Text(
-                      'Edit Profile',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            ZoomTapAnimation(
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      'assets/images/settings.png',
-                      width: Get.width * 0.20,
-                      height: Get.width * 0.20,
-                    ),
-                    const Text(
-                      'Settings',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            ZoomTapAnimation(
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      'assets/images/salary.png',
-                      width: Get.width * 0.25,
-                      height: Get.width * 0.25,
-                    ),
-                    const Text(
-                      'Salary',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        )
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          GetBuilder<ProfileController>(builder: (_) {
+            return profileController.user != null
+                ? ProfileCrad(
+                    jobtype: profileController.user!.workingmode,
+                    salary: profileController.user!.salary,
+                    curranecy:
+                        "${profileController.user!.curranecy} / ${profileController.user!.receipt}",
+                    username: profileController.user!.name,
+                    jobtitle: profileController.user!.jobtitle,
+                    // experience: '2 years',
+                  )
+                : const CircularProgressIndicator();
+          }),
+          const Divider(thickness: 2),
+          const Gap(100),
+          const ProfileButtons(),
+        ],
+      ),
     );
   }
 }

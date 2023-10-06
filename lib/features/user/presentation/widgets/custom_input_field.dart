@@ -12,6 +12,7 @@ class CustomInputField extends StatefulWidget {
   final TextDirection textDirection;
   final TextAlign textAlign;
   final InputDecoration decoration;
+  final TextInputType keyboardType;
 
   const CustomInputField({
     Key? key,
@@ -29,6 +30,7 @@ class CustomInputField extends StatefulWidget {
       focusedBorder: focusedBorder,
       disabledBorder: disabledBorder,
     ),
+    this.keyboardType = TextInputType.text,
   }) : super(key: key);
 
   @override
@@ -55,6 +57,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
         maxLines: widget.maxLines,
         maxLength: widget.maxChars,
         textAlign: widget.textAlign,
+        keyboardType: widget.keyboardType,
         decoration: widget.decoration.copyWith(
           hintTextDirection: widget.textDirection,
           suffixIcon: widget.isPassword

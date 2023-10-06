@@ -1,15 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
-import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../../app/errors/auth/excptions.dart';
+import '../../../../../app/errors/user/excptions.dart';
 import '../../../domain/entities/user.dart';
 import '../../models/user_model.dart';
 
 abstract class UserRemoteDataSource {
   Future<User> getUserInformation();
-  Future<Unit> saveUserInformation(UserModel user);
+  Future<Unit> addUserInformation(UserModel user);
   Future<Unit> updateUserInformation(UserModel user);
   Future<Unit> deleteUserInformation();
 }
@@ -21,40 +20,27 @@ class RemoteDataSourceImplement implements UserRemoteDataSource {
   @override
   Future<User> getUserInformation() async {
     try {
-      final user = await FirebaseFirestore.instance
-          .collection("Users")
-          .doc(uid)
-          .collection("Information")
-          .doc("MyInformation")
-          .get();
-      if (user.exists) {
+      final user =
+          await FirebaseFirestore.instance.collection("Users").doc(uid).get();
+      if (user.data() != null) {
         return UserModel.fromJson(user.data()!);
       } else {
-        throw UserNotFoundException;
+        throw UserNotFoundException();
       }
-    } on FirebaseException catch (error) {
-      if (kDebugMode) {
-        print(error);
-      }
+    } on FirebaseException {
       throw ServerException;
     }
   }
 
   @override
-  Future<Unit> saveUserInformation(UserModel user) async {
+  Future<Unit> addUserInformation(UserModel user) async {
     try {
       await FirebaseFirestore.instance
           .collection("Users")
           .doc(uid)
-          .collection("Information")
-          .add(
-            user.toJson(),
-          );
+          .set(user.toJson(), SetOptions(merge: true));
       return Future.value(unit);
-    } on FirebaseException catch (error) {
-      if (kDebugMode) {
-        print(error);
-      }
+    } on FirebaseException {
       throw ServerException;
     }
   }
@@ -62,19 +48,11 @@ class RemoteDataSourceImplement implements UserRemoteDataSource {
   @override
   Future<Unit> updateUserInformation(UserModel user) async {
     try {
-      await FirebaseFirestore.instance
-          .collection("Users")
-          .doc(uid)
-          .collection("Information")
-          .doc("MyInformation")
-          .update(
+      await FirebaseFirestore.instance.collection("Users").doc(uid).update(
             user.toJson(),
           );
       return Future.value(unit);
-    } on FirebaseException catch (error) {
-      if (kDebugMode) {
-        print(error);
-      }
+    } on FirebaseException {
       throw ServerException;
     }
   }
@@ -84,10 +62,7 @@ class RemoteDataSourceImplement implements UserRemoteDataSource {
     try {
       await FirebaseFirestore.instance.collection("Users").doc(uid).delete();
       return Future.value(unit);
-    } on FirebaseException catch (error) {
-      if (kDebugMode) {
-        print(error);
-      }
+    } on FirebaseException {
       throw ServerException;
     }
   }

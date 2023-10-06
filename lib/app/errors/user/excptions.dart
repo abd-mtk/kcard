@@ -2,6 +2,8 @@ class ServerException implements Exception {}
 
 class NetworkException implements Exception {}
 
+class UserNotFoundException implements Exception {}
+
 class CacheUserException implements Exception {}
 
 class AddUserInformationException implements Exception {}

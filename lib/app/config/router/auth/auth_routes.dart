@@ -6,6 +6,7 @@ import '../../../../features/auth/presentation/screens/login_screen.dart';
 import '../../../../features/auth/presentation/screens/register_screen.dart';
 import '../../../../features/auth/presentation/screens/welcome_screen.dart';
 import '../../../../features/home/screens/home_screen.dart';
+import '../../../../features/user/presentation/getx/Bindings/profile_binding.dart';
 
 // ignore: non_constant_identifier_names
 List<GetPage<dynamic>> AUTH = [
@@ -17,5 +18,11 @@ List<GetPage<dynamic>> AUTH = [
   ),
   GetPage(name: LoginScreen.routeName, page: () => LoginScreen()),
   GetPage(name: RegisterScreen.routeName, page: () => RegisterScreen()),
-  GetPage(name: HomeScreen.routeName, page: () => HomeScreen()),
+  GetPage(
+    name: HomeScreen.routeName,
+    page: () => HomeScreen(),
+    bindings: [
+      ProfileBinding(),
+    ],
+  ),
 ];

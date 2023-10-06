@@ -24,20 +24,22 @@ class UserRepositoryImplement implements UserRepository {
   Future<Either<UserFailure, User>> addUserInformation(User params) async {
     if (await networkInfo.isConnected) {
       try {
-        await remoteDataSource.saveUserInformation(UserModel(
+        await remoteDataSource.addUserInformation(UserModel(
             name: params.name,
             nickname: params.nickname,
-            age: params.age,
             jobtitle: params.jobtitle,
-            hoursperweek: params.hoursperweek,
-            salary: params.salary));
+            workingmode: params.workingmode,
+            receipt: params.receipt,
+            salary: params.salary,
+            curranecy: params.curranecy));
         await localDataSource.cacheUser(UserModel(
             name: params.name,
             nickname: params.nickname,
-            age: params.age,
+            workingmode: params.workingmode,
             jobtitle: params.jobtitle,
-            hoursperweek: params.hoursperweek,
-            salary: params.salary));
+            receipt: params.receipt,
+            salary: params.salary,
+            curranecy: params.curranecy));
         return Right(params);
       } on AddUserInformationException {
         return Left(AddUserInfoFailure());
@@ -69,17 +71,19 @@ class UserRepositoryImplement implements UserRepository {
         await remoteDataSource.updateUserInformation(UserModel(
             name: params.name,
             nickname: params.nickname,
-            age: params.age,
+            workingmode: params.workingmode,
             jobtitle: params.jobtitle,
-            hoursperweek: params.hoursperweek,
-            salary: params.salary));
+            receipt: params.receipt,
+            salary: params.salary,
+            curranecy: params.curranecy));
         await localDataSource.cacheUser(UserModel(
             name: params.name,
             nickname: params.nickname,
-            age: params.age,
+            workingmode: params.workingmode,
             jobtitle: params.jobtitle,
-            hoursperweek: params.hoursperweek,
-            salary: params.salary));
+            receipt: params.receipt,
+            salary: params.salary,
+            curranecy: params.curranecy));
         return Right(params);
       } on UpdateUserInformationException {
         return Left(UpdateUserInfoFailure());
@@ -97,12 +101,13 @@ class UserRepositoryImplement implements UserRepository {
         await localDataSource.cacheUser(UserModel(
             name: user.name,
             nickname: user.nickname,
-            age: user.age,
+            workingmode: user.workingmode,
             jobtitle: user.jobtitle,
-            hoursperweek: user.hoursperweek,
-            salary: user.salary));
+            receipt: user.receipt,
+            salary: user.salary,
+            curranecy: user.curranecy));
         return Right(user);
-      } on GetUserInformationException {
+      } on UserNotFoundException {
         return Left(GetUserInformationFailure());
       }
     } else {

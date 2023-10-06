@@ -1,23 +1,25 @@
 import '../../domain/entities/user.dart';
 
 class UserModel extends User {
-  const UserModel(
-      {
-      required super.name,
-      super.nickname,
-      super.jobtitle,
-      super.hoursperweek,
-      required super.salary,
-      super.age});
+  const UserModel({
+    required super.name,
+    super.nickname,
+    super.jobtitle,
+    required super.receipt,
+    required super.salary,
+    required super.curranecy,
+    required super.workingmode,
+  });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       name: json['name'],
       nickname: json['nickname'],
       jobtitle: json['jobtitle'],
-      hoursperweek: json['hoursperweek'],
+      receipt: json['receipt'],
       salary: json['salary'],
-      age: json['age'],
+      curranecy: json['curranecy'],
+      workingmode: json['workingmode'],
     );
   }
 
@@ -26,9 +28,10 @@ class UserModel extends User {
       'name': name,
       'nickname': nickname,
       'jobtitle': jobtitle,
-      'hoursperweek': hoursperweek,
+      'receipt': receipt,
       'salary': salary,
-      'age': age,
+      'curranecy': curranecy,
+      'workingmode': workingmode,
     };
   }
 }

@@ -4,20 +4,21 @@ class User extends Equatable {
   final String name;
   final String? nickname;
   final String? jobtitle;
-  final String? hoursperweek;
+  final String workingmode;
   final double salary;
-  final int? age;
+  final String curranecy;
+  final String receipt;
 
   const User({
     required this.name,
     this.nickname,
     this.jobtitle,
-    this.hoursperweek,
+    required this.workingmode,
     required this.salary,
-    this.age,
+    required this.curranecy,
+    required this.receipt,
   });
 
   @override
-  List<Object?> get props =>
-      [name, nickname, jobtitle, hoursperweek, salary, age];
+  List<Object?> get props => [name, nickname, jobtitle, workingmode, salary,curranecy, receipt];
 }

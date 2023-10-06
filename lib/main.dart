@@ -12,7 +12,12 @@ void main() async {
 }
 
 Future initServices() async {
-  await Get.putAsync(() => Services().init());
+  await Get.putAsync(() => AppServices().init());
+  await Get.putAsync(() => AuthServices().init());
+  await Get.putAsync(() => HomeServices().init());
+  await Get.putAsync(() => UserServices().init());
+  await Get.putAsync(() => BudgetServices().init());
+  await Get.putAsync(() => TransactionServices().init());
 }
 
 class MyApp extends StatelessWidget {
