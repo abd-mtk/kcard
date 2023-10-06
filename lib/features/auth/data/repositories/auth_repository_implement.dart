@@ -2,7 +2,7 @@ import 'package:fpdart/fpdart.dart';
 
 import '../../../../app/errors/auth/excptions.dart';
 import '../../../../app/errors/auth/failures.dart';
-import '../../../../app/utils/resources/network_info.dart';
+import '../../../../app/utils/resources/services/network_info.dart';
 import '../../domain/entities/auth.dart';
 import '../../domain/repositories/auth_repositories.dart';
 import '../data sources/local/auth_local_data_source.dart';
@@ -29,14 +29,14 @@ class AuthRepositoryImplement implements AuthRepository {
         localDataSource.cacheAuthUser(
             AuthModel(email: auth.email, password: auth.password));
         return Right(auth);
-      } on ServerException {
+      } on AuthServerException {
         return Left(AuthServerFailure());
       }
     } else {
       try {
         final authuser = await localDataSource.getAuthUser();
         return Right(authuser);
-      } on EmptyCacheException {
+      } on AuthEmptyCacheException {
         return Left(AuthEmptyCacheFailure());
       }
     }
@@ -51,7 +51,7 @@ class AuthRepositoryImplement implements AuthRepository {
         localDataSource.cacheAuthUser(
             AuthModel(email: auth.email, password: auth.password));
         return Right(auth);
-      } on ServerException {
+      } on AuthServerException {
         return Left(AuthServerFailure());
       }
     } else {
@@ -66,11 +66,11 @@ class AuthRepositoryImplement implements AuthRepository {
         await remoteDataSource.logout();
         await localDataSource.deleteAuthUser();
         return const Right(unit);
-      } on ServerException {
+      } on AuthServerException {
         return Left(AuthServerFailure());
       }
     } else {
-      return Left(NetworkFailure());
+      return Left(AuthNetworkFailure());
     }
   }
 }

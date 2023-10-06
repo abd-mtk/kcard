@@ -1,23 +1,23 @@
-class ServerException implements Exception {}
+class AuthServerException implements Exception {}
 
-class NetworkException implements Exception {}
+class AuthNetworkException implements Exception {}
 
-class EmptyCacheException implements Exception {}
+class AuthEmptyCacheException implements Exception {}
 
-class UserNotFoundException implements Exception {}
+class AuthUserNotFoundException implements Exception {}
 
-class WrongPasswordException implements Exception {}
+class AuthWrongPasswordException implements Exception {}
 
-class WeakPasswordException implements Exception {}
+class AuthWeakPasswordException implements Exception {}
 
-class EmailAlreadyInUseException implements Exception {}
+class AuthEmailAlreadyInUseException implements Exception {}
 
-class EmailNotVerifiedException implements Exception {}
+class AuthEmailNotVerifiedException implements Exception {}
 
-class EmailNotVaildException implements Exception {}
+class AuthEmailNotVaildException implements Exception {}
 
-class AddUserInformationException implements Exception {}
+class AuthAddUserInformationException implements Exception {}
 
-class UpdateUserInformationException implements Exception {}
+class AuthUpdateUserInformationException implements Exception {}
 
-class DeleteUserInformationException implements Exception {}
+class AuthDeleteUserInformationException implements Exception {}

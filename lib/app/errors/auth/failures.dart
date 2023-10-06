@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 abstract class AuthFailure extends Equatable {}
 
-class NetworkFailure extends AuthFailure {
+class AuthNetworkFailure extends AuthFailure {
   @override
   List<Object?> get props => [];
 }

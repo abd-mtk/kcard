@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 
-import '../../../features/auth/data/data sources/local/auth_local_data_source.dart';
-import '../../../features/auth/data/data sources/remote/auth_remot_data_source.dart';
+
+import '../../../../features/auth/data/data sources/local/auth_local_data_source.dart';
+import '../../../../features/auth/data/data sources/remote/auth_remot_data_source.dart';
 import 'app_services.dart';
 
 class AuthServices extends GetxService {

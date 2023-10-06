@@ -1,6 +1,7 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../app/errors/budget/failures.dart';
+import '../../../../app/errors/failures.dart';
+import '../entities/expenses.dart';
 import '../repositories/expenses_repositories.dart';
 
 class UpdateExpensesUseCase {
@@ -8,7 +9,7 @@ class UpdateExpensesUseCase {
 
   UpdateExpensesUseCase(this._repository);
 
-  Future<Either<ExpensesFailure, Unit>> call(int expensesId) async {
-    return await _repository.updateExpenses(expensesId);
+  Future<Either<Failure, Unit>> call(Expenses expenses) async {
+    return await _repository.updateExpenses(expenses);
   }
 }

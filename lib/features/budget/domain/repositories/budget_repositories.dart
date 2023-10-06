@@ -1,9 +1,9 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../app/errors/budget/failures.dart';
+import '../../../../app/errors/failures.dart';
 import '../entities/budget.dart';
 
 abstract class BudgetRepository {
-  Future<Either<BudgetFailure, Budget>> getBudget();
-  Future<Either<BudgetFailure, Unit>> updateBudget(Budget budget);
+  Future<Either<Failure, Budget>> getBudget();
+  Future<Either<Failure, Unit>> updateBudget(Budget budget);
 }

@@ -1,7 +1,7 @@
 
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../app/errors/user/failures.dart';
+import '../../../../app/errors/failures.dart';
 import '../entities/user.dart';
 import '../repositories/user_repositories.dart';
 
@@ -10,7 +10,7 @@ class GetUserInformationUseCase {
 
   GetUserInformationUseCase(this.repository);
 
-  Future<Either<UserFailure, User>> call() async {
+  Future<Either<Failure, User>> call() async {
     return await repository.getUserInformation();
   }
 }

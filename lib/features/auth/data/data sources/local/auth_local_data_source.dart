@@ -37,7 +37,7 @@ class LocalDataSourceImplement implements AuthLocalDataSource {
     if (user != null) {
       return Future.value(AuthModel.fromJson(json.decode(user)));
     } else {
-      throw EmptyCacheException();
+      throw AuthEmptyCacheException();
     }
   }
 }

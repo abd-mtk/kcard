@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import '../../../../../app/utils/resources/app_services.dart';
-import '../../../../../app/utils/resources/auth_services.dart';
+import '../../../../../app/utils/resources/services/app_services.dart';
+import '../../../../../app/utils/resources/services/auth_services.dart';
 import '../../../data/repositories/auth_repository_implement.dart';
 import '../../../domain/use cases/login.dart';
 import '../../../domain/use cases/logout.dart';

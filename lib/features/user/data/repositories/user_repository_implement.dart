@@ -1,8 +1,8 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../app/errors/user/excptions.dart';
-import '../../../../app/errors/user/failures.dart';
-import '../../../../app/utils/resources/network_info.dart';
+import '../../../../app/errors/excptions.dart';
+import '../../../../app/errors/failures.dart';
+import '../../../../app/utils/resources/services/network_info.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/user_repositories.dart';
 import '../data sources/local/user_local_data_source.dart';
@@ -21,7 +21,7 @@ class UserRepositoryImplement implements UserRepository {
   });
 
   @override
-  Future<Either<UserFailure, User>> addUserInformation(User params) async {
+  Future<Either<Failure, User>> addUserInformation(User params) async {
     if (await networkInfo.isConnected) {
       try {
         await remoteDataSource.addUserInformation(UserModel(
@@ -41,31 +41,31 @@ class UserRepositoryImplement implements UserRepository {
             salary: params.salary,
             curranecy: params.curranecy));
         return Right(params);
-      } on AddUserInformationException {
-        return Left(AddUserInfoFailure());
+      } on NetworkException {
+        return Left(SaveNetworkFailure());
       }
     } else {
-      return Left(NetworkFailure());
+      return Left(InternetConnectionFailure());
     }
   }
 
   @override
-  Future<Either<UserFailure, Unit>> deleteUserInformation(User params) async {
+  Future<Either<Failure, Unit>> deleteUserInformation(User params) async {
     if (await networkInfo.isConnected) {
       try {
         await remoteDataSource.deleteUserInformation();
         await localDataSource.deleteUser();
         return const Right(unit);
-      } on DeleteUserInformationException {
-        return Left(DeleteUserInfoFailure());
+      } on NetworkException {
+        return Left(DeleteNetworkFailure());
       }
     } else {
-      return Left(NetworkFailure());
+      return Left(InternetConnectionFailure());
     }
   }
 
   @override
-  Future<Either<UserFailure, User>> updateUserInformation(User params) async {
+  Future<Either<Failure, User>> updateUserInformation(User params) async {
     if (await networkInfo.isConnected) {
       try {
         await remoteDataSource.updateUserInformation(UserModel(
@@ -85,16 +85,16 @@ class UserRepositoryImplement implements UserRepository {
             salary: params.salary,
             curranecy: params.curranecy));
         return Right(params);
-      } on UpdateUserInformationException {
-        return Left(UpdateUserInfoFailure());
+      } on NetworkException {
+        return Left(UpdateNetworkFailure());
       }
     } else {
-      return Left(NetworkFailure());
+      return Left(InternetConnectionFailure());
     }
   }
 
   @override
-  Future<Either<UserFailure, User>> getUserInformation() async {
+  Future<Either<Failure, User>> getUserInformation() async {
     if (await networkInfo.isConnected) {
       try {
         final User user = await remoteDataSource.getUserInformation();
@@ -107,15 +107,15 @@ class UserRepositoryImplement implements UserRepository {
             salary: user.salary,
             curranecy: user.curranecy));
         return Right(user);
-      } on UserNotFoundException {
-        return Left(GetUserInformationFailure());
+      } on NetworkException {
+        return Left(GetNetworkFailure());
       }
     } else {
       try {
         final user = await localDataSource.getUser();
         return Right(user);
-      } on CacheUserException {
-        return Left(GetUserInformationFailure());
+      } on CacheException {
+        return Left(EmptyCacheFailure());
       }
     }
   }

@@ -3,9 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../domain/entities/user.dart';
 import '../../../domain/use cases/add_user_info.dart';
-import '../../../domain/use cases/delete_user_info.dart';
 import '../../../domain/use cases/get_user_info.dart';
-import '../../../domain/use cases/update_user_info.dart';
 
 class EditProfileController extends GetxController {
   AddUserInformationUseCase addUserInformationUseCase;

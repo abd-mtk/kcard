@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../app/errors/budget/failures.dart';
+import '../../../../app/errors/failures.dart';
 import '../entities/expenses.dart';
 import '../repositories/expenses_repositories.dart';
 
@@ -9,7 +9,7 @@ class GetExpensesUseCase {
 
   GetExpensesUseCase(this._repository);
 
-  Future<Either<ExpensesFailure, List<Expenses>>> call() async {
+  Future<Either<Failure, List<Expenses>>> call() async {
     return await _repository.getExpenses();
   }
 }

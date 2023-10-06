@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../app/errors/user/failures.dart';
+import '../../../../app/errors/failures.dart';
 import '../entities/user.dart';
 import '../repositories/user_repositories.dart';
 
@@ -9,7 +9,7 @@ class DeleteUserInformationUseCase {
 
   DeleteUserInformationUseCase(this.repository);
 
-  Future<Either<UserFailure, Unit>> call(User params) async {
+  Future<Either<Failure, Unit>> call(User params) async {
     return await repository.deleteUserInformation(params);
   }
 }

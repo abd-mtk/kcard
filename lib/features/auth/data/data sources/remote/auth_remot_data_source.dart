@@ -21,15 +21,15 @@ class RemoteDataSourceImplement implements AuthRemoteDataSource {
       return Future.value(unit);
     } on FirebaseAuthException catch (error) {
       if (error.code == 'user-not-found') {
-        throw UserNotFoundException();
+        throw AuthUserNotFoundException();
       } else if (error.code == 'wrong-password') {
-        throw WrongPasswordException();
+        throw AuthWrongPasswordException();
       } else if (error.code == 'invalid-email') {
-        throw EmailNotVaildException();
+        throw AuthEmailNotVaildException();
       } else if (!FirebaseAuth.instance.currentUser!.emailVerified) {
-        throw EmailNotVerifiedException;
+        throw AuthEmailNotVerifiedException;
       }
-      throw ServerException;
+      throw AuthServerException;
     }
   }
 
@@ -49,13 +49,13 @@ class RemoteDataSourceImplement implements AuthRemoteDataSource {
       return Future.value(unit);
     } on FirebaseAuthException catch (error) {
       if (error.code == 'weak-password') {
-        throw WeakPasswordException();
+        throw AuthWeakPasswordException();
       } else if (error.code == 'email-already-in-use') {
-        throw EmailAlreadyInUseException();
+        throw AuthEmailAlreadyInUseException();
       } else if (error.code == 'invalid-email') {
-        throw EmailNotVaildException();
+        throw AuthEmailNotVaildException();
       }
-      throw ServerException;
+      throw AuthServerException;
     }
   }
 }

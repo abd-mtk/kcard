@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../../app/errors/user/excptions.dart';
+import '../../../../../app/errors/excptions.dart';
 import '../../../domain/entities/user.dart';
 import '../../models/user_model.dart';
 
@@ -25,7 +25,7 @@ class RemoteDataSourceImplement implements UserRemoteDataSource {
       if (user.data() != null) {
         return UserModel.fromJson(user.data()!);
       } else {
-        throw UserNotFoundException();
+        throw DataException();
       }
     } on FirebaseException {
       throw ServerException;

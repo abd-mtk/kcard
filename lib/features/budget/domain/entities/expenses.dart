@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class Expenses extends Equatable {
-  final String id;
+  final String? id;
   final String name;
   final double amount;
   final String date;
@@ -9,7 +9,7 @@ class Expenses extends Equatable {
   final String note;
 
   const Expenses({
-    required this.id,
+     this.id,
     required this.name,
     required this.amount,
     required this.date,

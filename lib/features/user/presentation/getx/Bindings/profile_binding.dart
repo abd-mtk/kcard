@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import '../../../../../app/utils/resources/app_services.dart';
-import '../../../../../app/utils/resources/user_services.dart';
+import '../../../../../app/utils/resources/services/app_services.dart';
+import '../../../../../app/utils/resources/services/user_services.dart';
 import '../../../data/repositories/user_repository_implement.dart';
 import '../../../domain/use cases/get_user_info.dart';
 import '../controllers/profile_controller.dart';

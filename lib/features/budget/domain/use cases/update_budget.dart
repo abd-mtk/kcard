@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../app/errors/budget/failures.dart';
+import '../../../../app/errors/failures.dart';
 import '../entities/budget.dart';
 import '../repositories/budget_repositories.dart';
 
@@ -9,7 +9,7 @@ class UpdateBudgetUseCase {
 
   UpdateBudgetUseCase(this._repository);
 
-  Future<Either<BudgetFailure, Unit>> call(Budget params) async {
+  Future<Either<Failure, Unit>> call(Budget params) async {
     return await _repository.updateBudget(params);
   }
 }
