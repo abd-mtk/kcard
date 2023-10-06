@@ -10,7 +10,7 @@ import '../../models/expenses_model.dart';
 abstract class ExpensesLocalDataSource {
   Future<List<Expenses>> getExpenses();
   Future<Unit> cacheExpenses(List<ExpensesModel> expenses);
-  Future<Unit> deleteExpenses(int id);
+  Future<Unit> deleteExpenses(String id);
   Future<Unit> updateExpenses(ExpensesModel expenses);
 }
 
@@ -47,7 +47,7 @@ class ExpensesLocalDataSourceImplement implements ExpensesLocalDataSource {
   }
 
   @override
-  Future<Unit> deleteExpenses(int id) {
+  Future<Unit> deleteExpenses(String id) {
     List<String>? expensesList =
         sharedPreferences.getStringList(cachedExpenses);
     if (expensesList != null) {

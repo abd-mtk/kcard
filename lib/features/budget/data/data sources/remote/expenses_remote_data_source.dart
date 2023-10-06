@@ -10,7 +10,7 @@ import '../../models/expenses_model.dart';
 abstract class ExpensesRemoteDataSource {
   Future<List<Expenses>> getExpenses();
   Future<Unit> addExpenses(ExpensesModel expenses);
-  Future<Unit> deleteExpenses(int expensesId);
+  Future<Unit> deleteExpenses(String expensesId);
   Future<Unit> updateExpenses(ExpensesModel expenses);
 }
 
@@ -34,13 +34,13 @@ class ExpensesRemoteDataSourceImplement implements ExpensesRemoteDataSource {
   }
 
   @override
-  Future<Unit> deleteExpenses(int expensesId) async {
+  Future<Unit> deleteExpenses(String expensesId) async {
     try {
       FirebaseFirestore.instance
           .collection("Users")
           .doc(uid)
           .collection("Expenses")
-          .doc(expensesId.toString())
+          .doc(expensesId)
           .delete();
       return Future.value(unit);
     } on FirebaseException {

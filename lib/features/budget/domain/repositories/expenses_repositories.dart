@@ -7,5 +7,5 @@ abstract class ExpensesRepository {
   Future<Either<Failure, List<Expenses>>> getExpenses();
   Future<Either<Failure, Unit>> addExpenses(Expenses expenses);
   Future<Either<Failure, Unit>> updateExpenses(Expenses expenses);
-  Future<Either<Failure, Unit>> deleteExpenses(int expensesId);
+  Future<Either<Failure, Unit>> deleteExpenses(String expensesId);
 }
