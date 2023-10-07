@@ -15,9 +15,9 @@ abstract class UserLocalDataSource {
 
 const String cachedUser = "CACHED_USER";
 
-class LocalDataSourceImplement implements UserLocalDataSource {
+class UserLocalDataSourceImplement implements UserLocalDataSource {
   final SharedPreferences sharedPreferences;
-  const LocalDataSourceImplement({required this.sharedPreferences});
+  const UserLocalDataSourceImplement({required this.sharedPreferences});
 
   @override
   Future<Unit> cacheUser(UserModel user) {

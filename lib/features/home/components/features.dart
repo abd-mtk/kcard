@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../../user/presentation/screens/profile_screen.dart';
+import '../../wallet/presentation/screens/index_screen.dart';
 
 List<Widget> screens = [
   ProfileScreen(),
-  Container(
-    color: Colors.blue,
+  Center(
+    child: LoadingAnimationWidget.threeRotatingDots(
+      color: Colors.blue,
+      size: 25,
+    ),
   ),
-  Container(
-    color: Colors.green,
+  Center(
+    child: LoadingAnimationWidget.threeRotatingDots(
+      color: Colors.red,
+      size: 25,
+    ),
   ),
-  Container(
-    color: Colors.yellow,
-  ),
+  WalletIndexScreen(),
 ];

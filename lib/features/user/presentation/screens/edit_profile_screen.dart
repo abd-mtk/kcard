@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:kcard/features/user/presentation/getx/controllers/profile_controller.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../getx/controllers/edit_profile_controller.dart';
 import '../widgets/custom_dropdown.dart';
@@ -91,7 +92,15 @@ class EditProfileScreen extends StatelessWidget {
                     ],
                   ),
                 )
-              : const Center(child: CircularProgressIndicator());
+              : SizedBox(
+                  height: 200,
+                  child: Center(
+                    child: LoadingAnimationWidget.threeRotatingDots(
+                      color: Colors.blue,
+                      size: 25,
+                    ),
+                  ),
+                );
         }));
   }
 }

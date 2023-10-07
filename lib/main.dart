@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'app/config/router/wallet/budget_routes.dart';
 import 'imports.dart';
 
 void main() async {
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         ...AUTH,
         ...USER,
+        ...BUDGET,
       ],
     );
   }

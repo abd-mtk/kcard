@@ -4,7 +4,7 @@ class Expenses extends Equatable {
   final String? id;
   final String name;
   final double amount;
-  final String date;
+  final DateTime date;
   final String category;
   final String note;
 

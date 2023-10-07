@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fpdart/fpdart.dart';
 
 import '../../../../../app/errors/excptions.dart';
-import '../../../../../app/utils/resources/services/network_info.dart';
 import '../../../domain/entities/expenses.dart';
 import '../../models/expenses_model.dart';
 
@@ -15,10 +14,8 @@ abstract class ExpensesRemoteDataSource {
 }
 
 class ExpensesRemoteDataSourceImplement implements ExpensesRemoteDataSource {
-  final NetworkInfo networkInfo;
   final String uid = FirebaseAuth.instance.currentUser!.uid;
 
-  ExpensesRemoteDataSourceImplement({required this.networkInfo});
   @override
   Future<Unit> addExpenses(ExpensesModel expenses) async {
     try {

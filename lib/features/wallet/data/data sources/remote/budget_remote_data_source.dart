@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fpdart/fpdart.dart';
 
 import '../../../../../app/errors/excptions.dart';
-import '../../../../../app/utils/resources/services/network_info.dart';
 import '../../../domain/entities/budget.dart';
 import '../../models/budget_model.dart';
 
@@ -13,10 +12,9 @@ abstract class BudgetRemoteDataSource {
 }
 
 class BudgetRemoteDataSourceImplement implements BudgetRemoteDataSource {
-  final NetworkInfo networkInfo;
+
   final String uid = FirebaseAuth.instance.currentUser!.uid;
 
-  BudgetRemoteDataSourceImplement({required this.networkInfo});
 
   @override
   Future<Budget> getBudget() async {

@@ -13,8 +13,7 @@ abstract class UserRemoteDataSource {
   Future<Unit> deleteUserInformation();
 }
 
-class RemoteDataSourceImplement implements UserRemoteDataSource {
-  RemoteDataSourceImplement();
+class UserRemoteDataSourceImplement implements UserRemoteDataSource {
   final String uid = FirebaseAuth.instance.currentUser!.uid;
 
   @override

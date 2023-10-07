@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../getx/controllers/profile_controller.dart';
 import '../widgets/profile_buttons.dart';
@@ -28,7 +29,15 @@ class ProfileScreen extends StatelessWidget {
                     jobtitle: profileController.user!.jobtitle,
                     // experience: '2 years',
                   )
-                : const CircularProgressIndicator();
+                : SizedBox(
+                    height: 200,
+                    child: Center(
+                      child: LoadingAnimationWidget.threeRotatingDots(
+                        color: Colors.blue,
+                        size: 25,
+                      ),
+                    ),
+                  );
           }),
           const Divider(thickness: 2),
           const Gap(100),
