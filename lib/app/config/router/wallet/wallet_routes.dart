@@ -7,7 +7,7 @@ import '../../../../features/wallet/presentation/screens/expenses_screen.dart';
 import '../../../../features/wallet/presentation/screens/index_screen.dart';
 
 // ignore: non_constant_identifier_names
-List<GetPage<dynamic>> BUDGET = [
+List<GetPage<dynamic>> WALLET = [
   GetPage(
     name: WalletIndexScreen.routeName,
     page: () => const WalletIndexScreen(),
