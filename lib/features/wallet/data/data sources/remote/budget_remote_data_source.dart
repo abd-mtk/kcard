@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fpdart/fpdart.dart';
 
 import '../../../../../app/errors/excptions.dart';
@@ -12,9 +11,8 @@ abstract class BudgetRemoteDataSource {
 }
 
 class BudgetRemoteDataSourceImplement implements BudgetRemoteDataSource {
-
-  final String uid = FirebaseAuth.instance.currentUser!.uid;
-
+  final String uid;
+  BudgetRemoteDataSourceImplement({required this.uid});
 
   @override
   Future<Budget> getBudget() async {
@@ -43,7 +41,7 @@ class BudgetRemoteDataSourceImplement implements BudgetRemoteDataSource {
           .doc(uid)
           .collection("Budget")
           .doc("Budget")
-          .update(budget.toJson());
+          .set(budget.toJson(), SetOptions(merge: true));
       return Future.value((unit));
     } on FirebaseException {
       throw UpdateDataException();

@@ -12,7 +12,7 @@ class BudgetServices extends GetxService {
   Future<BudgetServices> init() async {
     budgetLocalDataSource = BudgetLocalDataSourceImplement(
         sharedPreferences: appServices.sharedPreferences);
-    budgetRemoteDataSource = BudgetRemoteDataSourceImplement();
+    budgetRemoteDataSource = BudgetRemoteDataSourceImplement(uid: appServices.uid);
     return this;
   }
 }

@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:fpdart/fpdart.dart';
 
 import '../../../../../app/errors/excptions.dart';
@@ -14,7 +13,9 @@ abstract class UserRemoteDataSource {
 }
 
 class UserRemoteDataSourceImplement implements UserRemoteDataSource {
-  final String uid = FirebaseAuth.instance.currentUser!.uid;
+  final String uid;
+
+  UserRemoteDataSourceImplement({required this.uid});
 
   @override
   Future<User> getUserInformation() async {

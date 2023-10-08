@@ -7,6 +7,8 @@ import '../../../../features/auth/presentation/screens/register_screen.dart';
 import '../../../../features/auth/presentation/screens/welcome_screen.dart';
 import '../../../../features/home/screens/home_screen.dart';
 import '../../../../features/user/presentation/getx/Bindings/profile_binding.dart';
+import '../../../../features/wallet/presentation/getx/Bindings/budget_binding.dart';
+import '../../../../features/wallet/presentation/getx/Bindings/expenses_binding.dart';
 
 // ignore: non_constant_identifier_names
 List<GetPage<dynamic>> AUTH = [
@@ -23,6 +25,8 @@ List<GetPage<dynamic>> AUTH = [
     page: () => HomeScreen(),
     bindings: [
       ProfileBinding(),
+      BudgetBinding(),
+      ExpensesBinding(),
     ],
   ),
 ];

@@ -23,11 +23,13 @@ class ExpensesLocalDataSourceImplement implements ExpensesLocalDataSource {
 
   @override
   Future<List<Expenses>> getExpenses() {
-    final jsonString = sharedPreferences.getStringList(cachedExpenses);
+    final jsonString = sharedPreferences.getString(cachedExpenses);
     if (jsonString != null) {
-      final expenses = jsonString
-          .map((e) => ExpensesModel.fromJson(json.decode(e)))
-          .toList();
+      final List expensesList = json.decode(jsonString) as List;
+      final List<Expenses> expenses = [];
+      for (var element in expensesList) {
+        expenses.add(ExpensesModel.fromJson(element));
+      }
       return Future.value(expenses);
     } else {
       throw CacheException();
@@ -37,9 +39,10 @@ class ExpensesLocalDataSourceImplement implements ExpensesLocalDataSource {
   @override
   Future<Unit> cacheExpenses(List<ExpensesModel> expenses) {
     try {
-      List expensesList = expenses.map((e) => e.toJson()).toList();
-      sharedPreferences.setStringList(
-          cachedExpenses, expensesList as List<String>);
+      List expensesList = expenses
+          .map<Map<String, dynamic>>((expenses) => expenses.toJson())
+          .toList();
+      sharedPreferences.setString(cachedExpenses, json.encode(expensesList));
       return Future.value(unit);
     } on CacheException {
       throw CacheException();

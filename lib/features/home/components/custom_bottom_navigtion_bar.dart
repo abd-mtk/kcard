@@ -15,7 +15,9 @@ class CustomBottomNavigtionbBar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
-        height: Get.height * 0.065,
+        height: Get.mediaQuery.orientation == Orientation.portrait
+            ? Get.height * 0.065
+            : Get.height * 0.13,
         decoration: const BoxDecoration(
           color: Colors.black,
           borderRadius: BorderRadius.all(Radius.circular(10)),

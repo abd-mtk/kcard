@@ -29,8 +29,9 @@ class HeadCard extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Spacer(),
+            // const Spacer(),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
                   "assets/images/money.png",
@@ -40,12 +41,17 @@ class HeadCard extends StatelessWidget {
                 Text(
                   salary.toString(),
                 ),
-                Text(curranecy ?? ''),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Text(curranecy ?? ''),
+                ),
               ],
             ),
             const Spacer(),
             Container(
-                width: Get.height * 0.22,
+                width: Get.mediaQuery.orientation == Orientation.portrait
+                    ? Get.width * 0.35
+                    : Get.width * 0.3,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -60,13 +66,25 @@ class HeadCard extends StatelessWidget {
                     jobtype == 'Employee'
                         ? Image.asset(
                             "assets/images/employee.png",
-                            width: Get.width * 0.18,
-                            height: Get.height * 0.125,
+                            width: Get.mediaQuery.orientation ==
+                                    Orientation.portrait
+                                ? Get.width * 0.18
+                                : Get.width * 0.28,
+                            height: Get.mediaQuery.orientation ==
+                                    Orientation.portrait
+                                ? Get.height * 0.125
+                                : Get.height * 0.2,
                           )
                         : Image.asset(
                             "assets/images/freelancer.png",
-                            width: Get.width * 0.18,
-                            height: Get.height * 0.125,
+                            width: Get.mediaQuery.orientation ==
+                                    Orientation.portrait
+                                ? Get.width * 0.2
+                                : Get.width * 0.2,
+                            height: Get.mediaQuery.orientation ==
+                                    Orientation.portrait
+                                ? Get.height * 0.125
+                                : Get.height * 0.2,
                           ),
                     Text(jobtype ?? ''),
                   ],

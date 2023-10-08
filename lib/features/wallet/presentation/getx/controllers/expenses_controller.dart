@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../domain/entities/expenses.dart';
@@ -5,6 +6,7 @@ import '../../../domain/use cases/add_expenses.dart';
 import '../../../domain/use cases/delete_expenses.dart';
 import '../../../domain/use cases/get_expenses.dart';
 import '../../../domain/use cases/update_expenses.dart';
+import 'budget_controller.dart';
 
 class ExpensesController extends GetxController {
   GetExpensesUseCase getExpensesUseCase;
@@ -18,8 +20,14 @@ class ExpensesController extends GetxController {
     required this.deleteExpensesUseCase,
     required this.updateExpensesUseCase,
   });
+
   Expenses? expenses;
   List<Expenses> expenseslist = [];
+  BudgetController budgetController = Get.find<BudgetController>();
+  TextEditingController titleController = TextEditingController();
+  TextEditingController valueController = TextEditingController();
+  TextEditingController categoryController = TextEditingController();
+  TextEditingController noteController = TextEditingController();
 
   Future<void> getExpenses() async {
     final result = await getExpensesUseCase.call();
@@ -31,12 +39,24 @@ class ExpensesController extends GetxController {
       ),
       (data) {
         expenseslist = data;
+        Get.snackbar(
+          'Success',
+          'Expenses loaded successfully',
+          snackPosition: SnackPosition.TOP,
+        );
         update();
       },
     );
   }
 
-  Future<void> addExpenses(Expenses expenses) async {
+  Future<void> addExpenses() async {
+    Expenses expenses = Expenses(
+      title: titleController.text,
+      value: double.parse(valueController.text),
+      category: categoryController.text,
+      note: noteController.text,
+      date: DateTime.now().toString(),
+    );
     final result = await addExpensesUseCase.call(expenses);
     result.fold(
       (failure) => Get.snackbar(
@@ -46,6 +66,8 @@ class ExpensesController extends GetxController {
       ),
       (data) {
         expenseslist.add(expenses);
+        editWallet(categoryController.text);
+        clear();
         update();
       },
     );
@@ -80,5 +102,51 @@ class ExpensesController extends GetxController {
         update();
       },
     );
+  }
+
+  @override
+  void onInit() {
+    getExpenses();
+    super.onInit();
+  }
+
+  void clear() {
+    titleController.clear();
+    valueController.clear();
+    categoryController.clear();
+    noteController.clear();
+  }
+
+  void editWallet(String value) {
+    if (value == "Expense") {
+      budgetController.currentBudgetController.text =
+          (double.parse(budgetController.currentBudgetController.text) -
+                  double.parse(valueController.text))
+              .toString();
+      budgetController.expenseController.text =
+          (double.parse(budgetController.expenseController.text) +
+                  double.parse(valueController.text))
+              .toString();
+    } else if (value == "Income") {
+      budgetController.currentBudgetController.text =
+          (double.parse(budgetController.currentBudgetController.text) +
+                  double.parse(valueController.text))
+              .toString();
+      budgetController.incomeController.text =
+          (double.parse(budgetController.incomeController.text) +
+                  double.parse(valueController.text))
+              .toString();
+    } else if (value == "Debt") {
+      budgetController.currentBudgetController.text =
+          (double.parse(budgetController.currentBudgetController.text) +
+                  double.parse(valueController.text))
+              .toString();
+      budgetController.debtController.text =
+          (double.parse(budgetController.debtController.text) +
+                  double.parse(valueController.text))
+              .toString();
+    }
+    budgetController.updateBudget();
+    budgetController.getBudget();
   }
 }

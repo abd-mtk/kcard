@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fpdart/fpdart.dart';
 
 import '../../../../../app/errors/excptions.dart';
@@ -14,8 +13,9 @@ abstract class ExpensesRemoteDataSource {
 }
 
 class ExpensesRemoteDataSourceImplement implements ExpensesRemoteDataSource {
-  final String uid = FirebaseAuth.instance.currentUser!.uid;
+  final String uid;
 
+  ExpensesRemoteDataSourceImplement({required this.uid});
   @override
   Future<Unit> addExpenses(ExpensesModel expenses) async {
     try {
@@ -54,11 +54,13 @@ class ExpensesRemoteDataSourceImplement implements ExpensesRemoteDataSource {
           .collection("Expenses")
           .get();
       if (expenses.docs.isNotEmpty) {
-        final expensesList =
-            expenses.docs.map((e) => ExpensesModel.fromJson(e.data())).toList();
+        final List<Expenses> expensesList = [];
+        for (var element in expenses.docs) {
+          expensesList.add(ExpensesModel.fromJson(element.data()));
+        }
         return expensesList;
       } else {
-        throw NoDataException();
+        return [];
       }
     } on FirebaseException {
       throw GetDateException();

@@ -24,8 +24,8 @@ class ExpensesRepositoryimplement implements ExpensesRepository {
     if (await networkInfo.isConnected) {
       try {
         await remoteDataSource.addExpenses(ExpensesModel(
-          name: expenses.name,
-          amount: expenses.amount,
+          title: expenses.title,
+          value: expenses.value,
           date: expenses.date,
           category: expenses.category,
           note: expenses.note,
@@ -57,19 +57,22 @@ class ExpensesRepositoryimplement implements ExpensesRepository {
   Future<Either<Failure, List<Expenses>>> getExpenses() async {
     if (await networkInfo.isConnected) {
       try {
-        final expenses = await remoteDataSource.getExpenses();
-        localDataSource.cacheExpenses(expenses
-            .map((e) => ExpensesModel(
-                  name: e.name,
-                  amount: e.amount,
-                  date: e.date,
-                  category: e.category,
-                  note: e.note,
-                ))
-            .toList());
+        final List<Expenses> expenses = await remoteDataSource.getExpenses();
+        List<ExpensesModel> expensesModel = [];
+        for (var element in expenses) {
+          expensesModel.add(ExpensesModel(
+            id: element.id,
+            title: element.title,
+            value: element.value,
+            date: element.date,
+            category: element.category,
+            note: element.note,
+          ));
+        }
+        localDataSource.cacheExpenses(expensesModel);
         return Right(expenses);
       } catch (e) {
-        return Left(NetworkFailure());
+        return Left(GetNetworkFailure());
       }
     } else {
       try {
@@ -85,8 +88,8 @@ class ExpensesRepositoryimplement implements ExpensesRepository {
     if (await networkInfo.isConnected) {
       try {
         await remoteDataSource.updateExpenses(ExpensesModel(
-          name: expenses.name,
-          amount: expenses.amount,
+          title: expenses.title,
+          value: expenses.value,
           date: expenses.date,
           category: expenses.category,
           note: expenses.note,

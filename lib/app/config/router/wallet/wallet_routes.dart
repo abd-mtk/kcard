@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../../../features/wallet/presentation/getx/Bindings/budget_binding.dart';
 import '../../../../features/wallet/presentation/screens/budget_details_screen.dart';
 import '../../../../features/wallet/presentation/screens/budget_edit_screen.dart';
 import '../../../../features/wallet/presentation/screens/expenses_add_screen.dart';
@@ -10,22 +11,23 @@ import '../../../../features/wallet/presentation/screens/index_screen.dart';
 List<GetPage<dynamic>> WALLET = [
   GetPage(
     name: WalletIndexScreen.routeName,
-    page: () => const WalletIndexScreen(),
+    page: () => WalletIndexScreen(),
+    
   ),
   GetPage(
     name: BudgetDetailsScreen.routeName,
-    page: () => const BudgetDetailsScreen(),
+    page: () => BudgetDetailsScreen(),
   ),
   GetPage(
     name: BudgetEditScreen.routeName,
-    page: () => const BudgetEditScreen(),
+    page: () => BudgetEditScreen(),
   ),
   GetPage(
     name: ExpensesAddScreen.routeName,
-    page: () => const ExpensesAddScreen(),
+    page: () => ExpensesAddScreen(),
   ),
   GetPage(
     name: ExpensesScreen.routeName,
-    page: () => const ExpensesScreen(),
+    page: () => ExpensesScreen(),
   ),
 ];

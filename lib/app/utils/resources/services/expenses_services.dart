@@ -12,7 +12,8 @@ class ExpensesServices extends GetxService {
   Future<ExpensesServices> init() async {
     expensesLocalDataSource = ExpensesLocalDataSourceImplement(
         sharedPreferences: appServices.sharedPreferences);
-    expensesRemoteDataSource = ExpensesRemoteDataSourceImplement();
+    expensesRemoteDataSource =
+        ExpensesRemoteDataSourceImplement(uid: appServices.uid);
     return this;
   }
 }

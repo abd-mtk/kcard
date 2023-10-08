@@ -12,8 +12,7 @@ class UserServices extends GetxService {
   Future<UserServices> init() async {
     userLocalDataSource = UserLocalDataSourceImplement(
         sharedPreferences: appServices.sharedPreferences);
-
-    userRemoteDataSource = UserRemoteDataSourceImplement();
+    userRemoteDataSource = UserRemoteDataSourceImplement(uid: appServices.uid);
     return this;
   }
 }
