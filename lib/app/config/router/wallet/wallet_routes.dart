@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 
-import '../../../../features/wallet/presentation/getx/Bindings/budget_binding.dart';
 import '../../../../features/wallet/presentation/screens/budget_details_screen.dart';
 import '../../../../features/wallet/presentation/screens/budget_edit_screen.dart';
 import '../../../../features/wallet/presentation/screens/expenses_add_screen.dart';
@@ -12,7 +11,6 @@ List<GetPage<dynamic>> WALLET = [
   GetPage(
     name: WalletIndexScreen.routeName,
     page: () => WalletIndexScreen(),
-    
   ),
   GetPage(
     name: BudgetDetailsScreen.routeName,
