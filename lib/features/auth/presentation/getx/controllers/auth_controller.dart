@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../user/presentation/screens/profile_screen.dart';
+import '../../../../home/screens/home_screen.dart';
 import '../../../domain/entities/auth.dart';
 import '../../../domain/use cases/login.dart';
 import '../../../domain/use cases/logout.dart';
@@ -36,7 +36,7 @@ class AuthController extends GetxController {
           print(left.runtimeType);
         }
       }, (right) {
-        Get.offAllNamed(ProfileScreen.routeName);
+        Get.offAllNamed(HomeScreen.routeName);
         if (kDebugMode) {
           print("ok");
         }

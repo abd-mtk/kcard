@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class Transaction extends Equatable {
-  final String id;
+  final String? id;
   final String type;
   final String recipient;
   final String title;
@@ -10,7 +10,7 @@ class Transaction extends Equatable {
   final String date;
 
   const Transaction({
-    required this.id,
+     this.id,
     required this.type,
     required this.recipient,
     required this.title,

@@ -14,6 +14,6 @@ export 'app/utils/resources/services/home_services.dart';
 export 'app/utils/resources/services/services.dart';
 export 'app/utils/resources/services/transaction_services.dart';
 export 'app/utils/resources/services/user_services.dart';
-export 'features/auth/presentation/getx/Bindings/auth_binding.dart';
+export 'features/auth/presentation/getx/bindings/auth_binding.dart';
 export 'features/auth/presentation/screens/welcome_screen.dart';
 export 'kcard_app.dart';

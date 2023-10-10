@@ -10,8 +10,8 @@ abstract class AuthRemoteDataSource {
   Future<Unit> logout();
 }
 
-class RemoteDataSourceImplement implements AuthRemoteDataSource {
-  const RemoteDataSourceImplement();
+class AuthRemoteDataSourceImplement implements AuthRemoteDataSource {
+  const AuthRemoteDataSourceImplement();
 
   @override
   Future<Unit> login(AuthModel auth) async {

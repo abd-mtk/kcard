@@ -8,12 +8,12 @@ import '../data sources/local/trnsaction_local_data_source.dart.dart';
 import '../data sources/remote/transaction_remote_data_source.dart';
 import '../models/transaction_model.dart';
 
-class TransactionRepositoryimplement implements TransactionRepository {
+class TransactionRepositoryImplement implements TransactionRepository {
   final TransactionRemoteDataSource remoteDataSource;
   final TransactionLocalDataSource localDataSource;
   final NetworkInfo networkInfo;
 
-  TransactionRepositoryimplement({
+  TransactionRepositoryImplement({
     required this.remoteDataSource,
     required this.localDataSource,
     required this.networkInfo,

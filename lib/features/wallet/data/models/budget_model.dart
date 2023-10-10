@@ -13,6 +13,12 @@ class BudgetModel extends Budget {
       income: json['income'],
       debt: json['debt']);
 
+  factory BudgetModel.fromEntity(Budget budget) => BudgetModel(
+      currentBudget: budget.currentBudget,
+      expenses: budget.expenses,
+      income: budget.income,
+      debt: budget.debt);
+
   Map<String, dynamic> toJson() => {
         'currentBudget': currentBudget,
         'expenses': expenses,

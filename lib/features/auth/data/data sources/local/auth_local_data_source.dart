@@ -15,9 +15,9 @@ abstract class AuthLocalDataSource {
 
 const String cachedAuthUser = "CACHED_AUTH_USER";
 
-class LocalDataSourceImplement implements AuthLocalDataSource {
+class AuthLocalDataSourceImplement implements AuthLocalDataSource {
   final SharedPreferences sharedPreferences;
-  const LocalDataSourceImplement({required this.sharedPreferences});
+  const AuthLocalDataSourceImplement({required this.sharedPreferences});
 
   @override
   Future<Unit> cacheAuthUser(AuthModel auth) {

@@ -1,12 +1,15 @@
 import 'package:get/get.dart';
 
-import '../../../../features/auth/presentation/getx/Bindings/auth_binding.dart';
+import '../../../../features/auth/presentation/getx/bindings/auth_binding.dart';
 import '../../../../features/auth/presentation/getx/middlewares/auth_middleware.dart';
 import '../../../../features/auth/presentation/screens/login_screen.dart';
 import '../../../../features/auth/presentation/screens/register_screen.dart';
 import '../../../../features/auth/presentation/screens/welcome_screen.dart';
+import '../../../../features/home/bindings/home_binding.dart';
 import '../../../../features/home/screens/home_screen.dart';
-import '../../../../features/user/presentation/getx/Bindings/profile_binding.dart';
+import '../../../../features/transaction/presentation/getx/bindings/transaction_binding.dart';
+import '../../../../features/user/presentation/getx/bindings/edit_profile_binding.dart';
+import '../../../../features/user/presentation/getx/bindings/profile_binding.dart';
 import '../../../../features/wallet/presentation/getx/Bindings/budget_binding.dart';
 import '../../../../features/wallet/presentation/getx/Bindings/expenses_binding.dart';
 
@@ -24,9 +27,12 @@ List<GetPage<dynamic>> AUTH = [
     name: HomeScreen.routeName,
     page: () => HomeScreen(),
     bindings: [
-      ProfileBinding(),
+      HomeBinging(),
       BudgetBinding(),
+      ProfileBinding(),
+      EditProfileBinding(),
       ExpensesBinding(),
+      TransactionBinding(),
     ],
   ),
 ];

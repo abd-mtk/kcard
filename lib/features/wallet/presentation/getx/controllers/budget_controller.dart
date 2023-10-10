@@ -50,6 +50,32 @@ class BudgetController extends GetxController {
     update();
   }
 
+  Future<void> receive(String value) async {
+    try {
+      currentBudgetController.text =
+          (double.parse(currentBudgetController.text) + double.parse(value))
+              .toString();
+
+      updateBudget();
+      getBudget();
+    } catch (e) {
+      Get.snackbar('Error', e.toString());
+    }
+  }
+
+  Future<void> send(String value) async {
+    try {
+      currentBudgetController.text =
+          (double.parse(currentBudgetController.text) - double.parse(value))
+              .toString();
+
+      updateBudget();
+      getBudget();
+    } catch (e) {
+      Get.snackbar('Error', e.toString());
+    }
+  }
+
   @override
   void onInit() {
     getBudget();
