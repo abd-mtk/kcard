@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 import 'auth/auth_routes.dart';
+import 'dashboard/dashboard_routes.dart';
 import 'transaction/transaaction_routes.dart';
 import 'user/user_routes.dart';
 import 'wallet/wallet_routes.dart';
@@ -11,4 +12,5 @@ List<GetPage<dynamic>>? ROUTER = [
   ...USER,
   ...WALLET,
   ...TRANSACTION,
+  ...DASHBOARD,
 ];

@@ -5,6 +5,8 @@ import '../../../../features/auth/presentation/getx/middlewares/auth_middleware.
 import '../../../../features/auth/presentation/screens/login_screen.dart';
 import '../../../../features/auth/presentation/screens/register_screen.dart';
 import '../../../../features/auth/presentation/screens/welcome_screen.dart';
+import '../../../../features/dashboard/presentation/getx/bindings/transaction_charts_binding.dart';
+import '../../../../features/dashboard/presentation/getx/bindings/wallet_charts_binding.dart';
 import '../../../../features/home/bindings/home_binding.dart';
 import '../../../../features/home/screens/home_screen.dart';
 import '../../../../features/transaction/presentation/getx/bindings/transaction_binding.dart';
@@ -33,6 +35,8 @@ List<GetPage<dynamic>> AUTH = [
       EditProfileBinding(),
       ExpensesBinding(),
       TransactionBinding(),
+      WalletChartsBinding(),
+      TransactionChartsBinding(),
     ],
   ),
 ];

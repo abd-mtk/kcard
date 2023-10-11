@@ -1,4 +1,4 @@
-import 'app/config/router/router.dart';
+import '../config/router/router.dart';
 import 'imports.dart';
 
 class KCardApp extends StatelessWidget {

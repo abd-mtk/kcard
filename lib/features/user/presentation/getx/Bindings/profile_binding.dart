@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import '../../../../../app/utils/resources/services/app_services.dart';
-import '../../../../../app/utils/resources/services/user_services.dart';
 import '../../../data/data sources/local/user_local_data_source.dart';
 import '../../../data/data sources/remote/user_remot_data_source.dart';
 import '../../../data/repositories/user_repository_implement.dart';

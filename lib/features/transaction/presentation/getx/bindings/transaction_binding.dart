@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:kcard/features/transaction/data/data%20sources/local/trnsaction_local_data_source.dart.dart';
 
 import '../../../../../app/utils/resources/services/app_services.dart';
-import '../../../../../app/utils/resources/services/transaction_services.dart';
 import '../../../data/data sources/remote/transaction_remote_data_source.dart';
 import '../../../data/repositories/transaction_repository_implement.dart';
 import '../../../domain/use cases/create_transaction.dart';
@@ -28,7 +27,7 @@ class TransactionBinding extends Bindings {
       return TransactionController(
         createTrnsctionsUseCase: CreateTrnsctionsUseCase(repository),
         deleteTrnsctionsUseCase: DeleteTrnsctionsUseCase(repository),
-        getTrnsctionsUseCase: GetTrnsctionsUseCase(repository),
+        getTrnsactionsUseCase: GetTrnsactionsUseCase(repository),
       );
     });
   }

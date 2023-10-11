@@ -1,8 +1,6 @@
-import 'imports.dart';
+import 'app/init/imports.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  await initServices();
+  await initApp();
   runApp(const KCardApp());
 }

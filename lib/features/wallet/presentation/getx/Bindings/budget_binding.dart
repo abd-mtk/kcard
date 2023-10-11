@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import '../../../../../app/utils/resources/services/app_services.dart';
-import '../../../../../app/utils/resources/services/budget_services.dart';
 import '../../../data/data sources/local/budget_local_data_source.dart';
 import '../../../data/data sources/remote/budget_remote_data_source.dart';
 import '../../../data/repositories/budget_repository_implement.dart';
@@ -25,7 +24,7 @@ class BudgetBinding extends Bindings {
         remoteDataSource: BudgetRemoteDataSourceImplement(
             uid: FirebaseAuth.instance.currentUser!.uid),
       );
-
+ 
       return BudgetController(
           getBudgetUseCase: GetBudgetUseCase(repository),
           updateBudgetUseCase: UpdateBudgetUseCase(repository));

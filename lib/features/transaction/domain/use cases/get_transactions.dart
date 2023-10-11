@@ -4,10 +4,10 @@ import '../../../../app/errors/failures.dart';
 import '../entities/transaction.dart';
 import '../repositories/transsaction_repositories.dart';
 
-class GetTrnsctionsUseCase {
+class GetTrnsactionsUseCase {
   final TransactionRepository _repository;
 
-  GetTrnsctionsUseCase(this._repository);
+  GetTrnsactionsUseCase(this._repository);
 
   Future<Either<Failure, List<Transaction>>> call() async {
     return await _repository.getTransactions();

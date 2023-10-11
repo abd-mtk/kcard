@@ -8,13 +8,13 @@ import '../../../domain/use cases/delete_transaction.dart';
 import '../../../domain/use cases/get_transactions.dart';
 
 class TransactionController extends GetxController {
-  final GetTrnsctionsUseCase getTrnsctionsUseCase;
+  final GetTrnsactionsUseCase getTrnsactionsUseCase;
   final CreateTrnsctionsUseCase createTrnsctionsUseCase;
   final DeleteTrnsctionsUseCase deleteTrnsctionsUseCase;
   final BudgetController budgetController = Get.find<BudgetController>();
 
   TransactionController({
-    required this.getTrnsctionsUseCase,
+    required this.getTrnsactionsUseCase,
     required this.createTrnsctionsUseCase,
     required this.deleteTrnsctionsUseCase,
   });
@@ -31,7 +31,7 @@ class TransactionController extends GetxController {
   TextEditingController transactionDate = TextEditingController();
 
   Future<void> getTransactions() async {
-    final result = await getTrnsctionsUseCase();
+    final result = await getTrnsactionsUseCase();
     result.fold(
       (l) => Get.snackbar('Error', l.runtimeType.toString()),
       (r) {
