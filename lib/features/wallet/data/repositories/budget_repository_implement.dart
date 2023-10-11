@@ -26,7 +26,7 @@ class BudgetRepositoryImplement implements BudgetRepository {
         final Budget budget = await remoteDataSource.getBudget();
         localDataSource.cacheBudget(BudgetModel(
           currentBudget: budget.currentBudget,
-          expenses: budget.expenses,
+          payment: budget.payment,
           income: budget.income,
           debt: budget.debt,
         ));
@@ -49,13 +49,13 @@ class BudgetRepositoryImplement implements BudgetRepository {
       try {
         remoteDataSource.updateBudget(BudgetModel(
           currentBudget: budget.currentBudget,
-          expenses: budget.expenses,
+          payment: budget.payment,
           income: budget.income,
           debt: budget.debt,
         ));
         localDataSource.cacheBudget(BudgetModel(
           currentBudget: budget.currentBudget,
-          expenses: budget.expenses,
+          payment: budget.payment,
           income: budget.income,
           debt: budget.debt,
         ));

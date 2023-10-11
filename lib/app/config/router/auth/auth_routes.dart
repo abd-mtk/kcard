@@ -5,15 +5,14 @@ import '../../../../features/auth/presentation/getx/middlewares/auth_middleware.
 import '../../../../features/auth/presentation/screens/login_screen.dart';
 import '../../../../features/auth/presentation/screens/register_screen.dart';
 import '../../../../features/auth/presentation/screens/welcome_screen.dart';
-import '../../../../features/dashboard/presentation/getx/bindings/transaction_charts_binding.dart';
-import '../../../../features/dashboard/presentation/getx/bindings/wallet_charts_binding.dart';
+import '../../../../features/dashboard/presentation/getx/bindings/dashboard_binding.dart';
 import '../../../../features/home/bindings/home_binding.dart';
 import '../../../../features/home/screens/home_screen.dart';
 import '../../../../features/transaction/presentation/getx/bindings/transaction_binding.dart';
 import '../../../../features/user/presentation/getx/bindings/edit_profile_binding.dart';
 import '../../../../features/user/presentation/getx/bindings/profile_binding.dart';
 import '../../../../features/wallet/presentation/getx/Bindings/budget_binding.dart';
-import '../../../../features/wallet/presentation/getx/Bindings/expenses_binding.dart';
+import '../../../../features/wallet/presentation/getx/Bindings/payment_binding.dart';
 
 // ignore: non_constant_identifier_names
 List<GetPage<dynamic>> AUTH = [
@@ -33,10 +32,9 @@ List<GetPage<dynamic>> AUTH = [
       BudgetBinding(),
       ProfileBinding(),
       EditProfileBinding(),
-      ExpensesBinding(),
+      PaymentBinding(),
       TransactionBinding(),
-      WalletChartsBinding(),
-      TransactionChartsBinding(),
+      DashboardBindging(),
     ],
   ),
 ];

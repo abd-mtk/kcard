@@ -33,7 +33,9 @@ class TransactionController extends GetxController {
   Future<void> getTransactions() async {
     final result = await getTrnsactionsUseCase();
     result.fold(
-      (l) => Get.snackbar('Error', l.runtimeType.toString()),
+      (l) {
+        // Get.snackbar('Error', l.runtimeType.toString());
+      },
       (r) {
         senttransactions =
             r.where((element) => element.type == 'Send').toList();
@@ -89,7 +91,6 @@ class TransactionController extends GetxController {
 
         getTransactions();
         if (transactionType.text == 'Receive') {
-          ;
           budgetController.receive(transactionValue.text);
         } else {
           budgetController.send(transactionValue.text);

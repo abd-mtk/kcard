@@ -5,9 +5,10 @@ import 'package:toggle_switch/toggle_switch.dart';
 
 import 'transaction_edit.dart';
 
+// ignore: must_be_immutable
 class TransactionType extends StatefulWidget {
-  TextEditingController type;
-  TextEditingController resipient;
+  final TextEditingController type;
+  final TextEditingController resipient;
   bool isSend = true;
 
   TransactionType({
@@ -68,7 +69,7 @@ class _TransactionTypeState extends State<TransactionType> {
                 label: 'Send To',
                 icon: Iconsax.send_square,
                 controller: widget.resipient,
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.text,
               )
             : const SizedBox(),
         !widget.isSend

@@ -9,7 +9,7 @@ import '../../../../features/transaction/presentation/screens/transction_index_s
 List<GetPage<dynamic>> TRANSACTION = [
   GetPage(
     name: TransactionIndexScreen.routeName,
-    page: () => TransactionIndexScreen(),
+    page: () => const TransactionIndexScreen(),
     bindings: [TransactionBinding()],
   ),
   GetPage(

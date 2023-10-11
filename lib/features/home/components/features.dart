@@ -8,6 +8,6 @@ import '../../wallet/presentation/screens/index_screen.dart';
 List<Widget> screens = [
   ProfileScreen(),
   DashBoardIndexScreen(),
-  TransactionIndexScreen(),
+  const TransactionIndexScreen(),
   WalletIndexScreen(),
 ];

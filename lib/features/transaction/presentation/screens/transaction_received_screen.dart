@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
+import '../../../dashboard/presentation/screens/transaction_charts_screen.dart';
 import '../getx/controllers/transaction_controller.dart';
 import '../widgets/trabsaction_sent.dart';
 
@@ -21,7 +22,7 @@ class TransactionReceivedScreen extends StatelessWidget {
         const Gap(20),
         GetBuilder<TransactionController>(
           builder: (_) => controller.receivedtransactions == null
-              ? const Center(child: CircularProgressIndicator())
+              ? Center(child: ReloadBox(onPressed: controller.getTransactions))
               : ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),

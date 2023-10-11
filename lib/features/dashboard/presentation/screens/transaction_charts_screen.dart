@@ -1,45 +1,77 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-import '../getx/controllers/transaction_chart_controller.dart';
+import '../getx/controllers/dashboard_controller.dart';
 import '../widgets/chart_container.dart';
 
 class TransactionChartsScreen extends StatelessWidget {
   TransactionChartsScreen({Key? key}) : super(key: key);
   static const String routeName = '/transactionChartsScreen';
-  final TransactionChartsController controller =
-      Get.find<TransactionChartsController>();
+
+  final DashboardController dashboardcontroller =
+      Get.find<DashboardController>();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: GetBuilder<TransactionChartsController>(builder: (_) {
-        return controller.receiveSpots.isNotEmpty
+      child: GetBuilder<DashboardController>(builder: (_) {
+        return dashboardcontroller.transaction != null
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  BarchartContainer(controller: controller),
+                  BarchartContainer(controller: dashboardcontroller),
                   ChartContainer(
-                    spots: controller.receiveSpots,
+                    spots: dashboardcontroller.receiveSpots,
                     title: 'Receive',
                   ),
                   ChartContainer(
-                    spots: controller.sendSpots,
+                    spots: dashboardcontroller.sendSpots,
                     title: 'Send',
                   ),
                 ],
               )
-            : SizedBox(
-                height: Get.height * 0.4,
-                child: Center(
-                  child: LoadingAnimationWidget.inkDrop(
-                    color: Colors.purple,
-                    size: 40,
-                  ),
-                ),
-              );
+            : ReloadBox(onPressed: dashboardcontroller.getDashboard);
       }),
+    );
+  }
+}
+
+class ReloadBox extends StatelessWidget {
+  const ReloadBox({
+    super.key,
+    required this.onPressed,
+  });
+
+  final Function onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: Get.height * 0.4,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            'No data',
+            style: TextStyle(
+              color: Colors.grey,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.purple,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(32.0),
+                ),
+              ),
+              onPressed: () => onPressed(),
+              icon: const Icon(Icons.refresh),
+              label: const Text('Refresh'))
+        ],
+      ),
     );
   }
 }
@@ -50,7 +82,7 @@ class BarchartContainer extends StatelessWidget {
     required this.controller,
   });
 
-  final TransactionChartsController controller;
+  final DashboardController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +136,7 @@ class BarChartWidget extends StatelessWidget {
     required this.controller,
   });
 
-  final TransactionChartsController controller;
+  final DashboardController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +148,7 @@ class BarChartWidget extends StatelessWidget {
           BarChartData(
             extraLinesData: ExtraLinesData(horizontalLines: [
               HorizontalLine(
-                y: controller.maxvsentalue,
+                y: controller.maxvsentvalue,
                 color: Colors.green.withOpacity(0.5),
                 strokeWidth: 2,
               ),
@@ -143,7 +175,7 @@ class BarChartWidget extends StatelessWidget {
                         topLeft: Radius.circular(5),
                         topRight: Radius.circular(5),
                       ),
-                      toY: controller.maxvsentalue,
+                      toY: controller.maxvsentvalue,
                       color: Colors.green,
                     ),
                     BarChartRodData(

@@ -37,7 +37,7 @@ class TransactionIndexScreen extends StatelessWidget {
               ],
             ),
           ),
-          TransactionTabsView()
+          const TransactionTabsView()
         ],
       ),
     );

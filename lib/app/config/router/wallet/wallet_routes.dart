@@ -2,8 +2,8 @@ import 'package:get/get.dart';
 
 import '../../../../features/wallet/presentation/screens/budget_details_screen.dart';
 import '../../../../features/wallet/presentation/screens/budget_edit_screen.dart';
-import '../../../../features/wallet/presentation/screens/expenses_add_screen.dart';
-import '../../../../features/wallet/presentation/screens/expenses_screen.dart';
+import '../../../../features/wallet/presentation/screens/payment_add_screen.dart';
+import '../../../../features/wallet/presentation/screens/payment_screen.dart';
 import '../../../../features/wallet/presentation/screens/index_screen.dart';
 
 // ignore: non_constant_identifier_names
@@ -21,11 +21,11 @@ List<GetPage<dynamic>> WALLET = [
     page: () => BudgetEditScreen(),
   ),
   GetPage(
-    name: ExpensesAddScreen.routeName,
-    page: () => ExpensesAddScreen(),
+    name: PaymentAddScreen.routeName,
+    page: () => PaymentAddScreen(),
   ),
   GetPage(
-    name: ExpensesScreen.routeName,
-    page: () => ExpensesScreen(),
+    name: PaymentScreen.routeName,
+    page: () => PaymentScreen(),
   ),
 ];

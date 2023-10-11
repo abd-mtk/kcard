@@ -1,7 +1,7 @@
-import '../../domain/entities/expenses.dart';
+import '../../domain/entities/payment.dart';
 
-class ExpensesModel extends Expenses {
-  const ExpensesModel(
+class PaymentModel extends Payment {
+  const PaymentModel(
       {super.id,
       required super.title,
       required super.value,
@@ -9,7 +9,7 @@ class ExpensesModel extends Expenses {
       required super.category,
       required super.note});
 
-  factory ExpensesModel.fromJson(Map<String, dynamic> json) => ExpensesModel(
+  factory PaymentModel.fromJson(Map<String, dynamic> json) => PaymentModel(
       id: json['id'],
       title: json['title'],
       value: json['value'],
@@ -17,13 +17,13 @@ class ExpensesModel extends Expenses {
       category: json['category'],
       note: json['note']);
 
-  factory ExpensesModel.fromEntity(Expenses expenses) => ExpensesModel(
-      id: expenses.id,
-      title: expenses.title,
-      value: expenses.value,
-      date: expenses.date,
-      category: expenses.category,
-      note: expenses.note);
+  factory PaymentModel.fromEntity(Payment payment) => PaymentModel(
+      id: payment.id,
+      title: payment.title,
+      value: payment.value,
+      date: payment.date,
+      category: payment.category,
+      note: payment.note);
 
   Map<String, dynamic> toJson() => {
         'id': id,

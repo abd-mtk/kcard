@@ -37,7 +37,7 @@ class DashBoardIndexScreen extends StatelessWidget {
               ],
             ),
           ),
-          DashboardTabsView(),
+          const DashboardTabsView(),
         ],
       ),
     );

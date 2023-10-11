@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class Expenses extends Equatable {
+class Payment extends Equatable {
   final String? id;
   final String title;
   final double value;
@@ -8,7 +8,7 @@ class Expenses extends Equatable {
   final String category;
   final String note;
 
-  const Expenses({
+  const Payment({
      this.id,
     required this.title,
     required this.value,

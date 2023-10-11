@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-import '../getx/controllers/wallet_charts_controller.dart';
+import '../getx/controllers/dashboard_controller.dart';
 import '../widgets/chart_container.dart';
 import '../widgets/pie_chart_widget.dart';
 
 class WalletChartsScreen extends StatelessWidget {
   WalletChartsScreen({Key? key}) : super(key: key);
   static const String routeName = '/walletChartsScreen';
-  final WalletChartsController controller = Get.find<WalletChartsController>();
-
+  final DashboardController dashboardcontroller =
+      Get.find<DashboardController>();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: GetBuilder<WalletChartsController>(builder: (_) {
-        return controller.budget != null
+      child: GetBuilder<DashboardController>(builder: (_) {
+        return dashboardcontroller.budget != null
             ? Column(
                 children: [
                   Padding(
@@ -40,31 +39,49 @@ class WalletChartsScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        child: PieChartWidget(controller: controller),
+                        child: PieChartWidget(
+                            dashboardcontroller: dashboardcontroller),
                       ),
                     ),
                   ),
                   ChartContainer(
-                    spots: controller.expensespots,
-                    title: 'Expenses',
+                    spots: dashboardcontroller.paymentspots,
+                    title: 'Payment',
                   ),
                   ChartContainer(
-                    spots: controller.incomespots,
+                    spots: dashboardcontroller.incomespots,
                     title: 'Incomes',
                   ),
                   ChartContainer(
-                    spots: controller.debtspots,
+                    spots: dashboardcontroller.debtspots,
                     title: 'Debts',
                   ),
                 ],
               )
             : SizedBox(
                 height: Get.height * 0.4,
-                child: Center(
-                  child: LoadingAnimationWidget.inkDrop(
-                    color: Colors.white,
-                    size: 40,
-                  ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'No data',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    ElevatedButton.icon(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.purple,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(32.0),
+                          ),
+                        ),
+                        onPressed: () => dashboardcontroller.getDashboard(),
+                        icon: const Icon(Icons.refresh),
+                        label: const Text('Refresh'))
+                  ],
                 ),
               );
       }),

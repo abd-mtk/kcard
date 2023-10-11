@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 
-import '../getx/controllers/expenses_controller.dart';
+import '../getx/controllers/payment_controller.dart';
 import '../widgets/category_list.dart';
 import '../widgets/custom_dropdown.dart';
-import '../widgets/expenses_add.dart';
+import '../widgets/payment_add_filed.dart';
 
-class ExpensesAddScreen extends StatelessWidget {
-  ExpensesAddScreen({super.key});
-  static const routeName = '/expenses-add';
-  final ExpensesController expensesController = Get.find<ExpensesController>();
+class PaymentAddScreen extends StatelessWidget {
+  PaymentAddScreen({super.key});
+  static const routeName = '/payment-add-screen';
+  final PaymentController paymentController = Get.find<PaymentController>();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -19,33 +19,33 @@ class ExpensesAddScreen extends StatelessWidget {
         const Divider(
           color: Colors.grey,
         ),
-        ExpensesAddFiled(
+        PaymentAddFiled(
           label: 'Title',
           icon: Iconsax.tag,
-          controller: expensesController.titleController,
+          controller: paymentController.titleController,
         ),
-        ExpensesAddFiled(
+        PaymentAddFiled(
           label: 'Value',
           icon: Iconsax.money,
-          controller: expensesController.valueController,
+          controller: paymentController.valueController,
           keyboardType: TextInputType.number,
         ),
         CustomDropDown(
           label: 'Category',
           items: category,
-          controller: expensesController.categoryController,
+          controller: paymentController.categoryController,
           defaultItem: 0,
         ),
-        ExpensesAddFiled(
+        PaymentAddFiled(
           label: 'Note',
           icon: Iconsax.note,
-          controller: expensesController.noteController,
+          controller: paymentController.noteController,
           maxLines: 6,
         ),
         const SizedBox(height: 20),
         ElevatedButton(
           onPressed: () {
-            expensesController.addExpenses();
+            paymentController.addPayment();
           },
           style: ElevatedButton.styleFrom(
             minimumSize: const Size(200, 50),
@@ -59,7 +59,7 @@ class ExpensesAddScreen extends StatelessWidget {
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Add Expenses'),
+                Text('Add Payment'),
                 Icon(Iconsax.wallet_add_1),
               ],
             ),

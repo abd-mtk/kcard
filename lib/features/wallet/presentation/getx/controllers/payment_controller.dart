@@ -1,71 +1,76 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../domain/entities/expenses.dart';
-import '../../../domain/use cases/add_expenses.dart';
-import '../../../domain/use cases/delete_expenses.dart';
-import '../../../domain/use cases/get_expenses.dart';
-import '../../../domain/use cases/update_expenses.dart';
+import '../../../domain/entities/payment.dart';
+import '../../../domain/use cases/add_payment.dart';
+import '../../../domain/use cases/delete_payment.dart';
+import '../../../domain/use cases/get_payment.dart';
+import '../../../domain/use cases/update_payment.dart';
 import 'budget_controller.dart';
 
-class ExpensesController extends GetxController {
-  GetExpensesUseCase getExpensesUseCase;
-  AddExpensesUseCase addExpensesUseCase;
-  DeleteExpensesUseCase deleteExpensesUseCase;
-  UpdateExpensesUseCase updateExpensesUseCase;
+class PaymentController extends GetxController {
+  GetPaymentUseCase getPaymentUseCase;
+  AddPaymenUseCase addPaymentUseCase;
+  DeletePaymentUseCase deletePaymentUseCase;
+  UpdatePaymentUseCase updatePaymentUseCase;
 
-  ExpensesController({
-    required this.getExpensesUseCase,
-    required this.addExpensesUseCase,
-    required this.deleteExpensesUseCase,
-    required this.updateExpensesUseCase,
+  PaymentController({
+    required this.getPaymentUseCase,
+    required this.addPaymentUseCase,
+    required this.deletePaymentUseCase,
+    required this.updatePaymentUseCase,
   });
 
-  Expenses? expenses;
-  List<Expenses> expenseslist = [];
+  Payment? payment;
+  List<Payment> paymentlist = [];
   BudgetController budgetController = Get.find<BudgetController>();
   TextEditingController titleController = TextEditingController();
   TextEditingController valueController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
   TextEditingController noteController = TextEditingController();
 
-  Future<void> getExpenses() async {
-    final result = await getExpensesUseCase.call();
+  Future<void> getpayment() async {
+    final result = await getPaymentUseCase.call();
     result.fold(
-      (failure) => Get.snackbar(
-        'Error',
-        failure.runtimeType.toString(),
-        snackPosition: SnackPosition.TOP,
-      ),
+      (failure) {
+        // Get.snackbar(
+        //   'Error',
+        //   failure.runtimeType.toString(),
+        //   snackPosition: SnackPosition.TOP,
+        // );
+      },
       (data) {
-        expenseslist = data;
-        Get.snackbar(
-          'Success',
-          'Expenses loaded successfully',
-          snackPosition: SnackPosition.TOP,
-        );
+        paymentlist = data;
+        // Get.snackbar(
+        //   'Success',
+        //   'payment loaded successfully',
+        //   snackPosition: SnackPosition.TOP,
+        // );
         update();
       },
     );
   }
 
-  Future<void> addExpenses() async {
-    Expenses expenses = Expenses(
+  Future<void> addPayment() async {
+    Payment payment = Payment(
       title: titleController.text,
       value: double.parse(valueController.text),
-      category: categoryController.text,
+      category:
+          categoryController.text.isEmpty ? "Payment" : categoryController.text,
       note: noteController.text,
       date: DateTime.now().toString(),
     );
-    final result = await addExpensesUseCase.call(expenses);
+    final result = await addPaymentUseCase.call(payment);
     result.fold(
-      (failure) => Get.snackbar(
-        'Error',
-        failure.runtimeType.toString(),
-        snackPosition: SnackPosition.TOP,
-      ),
+      (failure) {
+        Get.snackbar(
+          'Error',
+          failure.runtimeType.toString(),
+          snackPosition: SnackPosition.TOP,
+        );
+      },
       (data) {
-        expenseslist.add(expenses);
+        paymentlist.add(payment);
         editWallet(categoryController.text);
         clear();
         update();
@@ -73,8 +78,8 @@ class ExpensesController extends GetxController {
     );
   }
 
-  Future<void> deleteExpenses(Expenses expenses) async {
-    final result = await deleteExpensesUseCase.call(expenses.id!);
+  Future<void> deletePayment(Payment payment) async {
+    final result = await deletePaymentUseCase.call(payment.id!);
     result.fold(
       (failure) => Get.snackbar(
         'Error',
@@ -82,14 +87,14 @@ class ExpensesController extends GetxController {
         snackPosition: SnackPosition.TOP,
       ),
       (data) {
-        expenseslist.remove(expenses);
+        paymentlist.remove(payment);
         update();
       },
     );
   }
 
-  Future<void> updateExpenses(Expenses expenses) async {
-    final result = await updateExpensesUseCase.call(expenses);
+  Future<void> updatePayment(Payment payment) async {
+    final result = await updatePaymentUseCase.call(payment);
     result.fold(
       (failure) => Get.snackbar(
         'Error',
@@ -97,8 +102,8 @@ class ExpensesController extends GetxController {
         snackPosition: SnackPosition.TOP,
       ),
       (data) {
-        expenseslist.removeWhere((element) => element.id == expenses.id);
-        expenseslist.add(expenses);
+        paymentlist.removeWhere((element) => element.id == payment.id);
+        paymentlist.add(payment);
         update();
       },
     );
@@ -106,7 +111,7 @@ class ExpensesController extends GetxController {
 
   @override
   void onInit() {
-    getExpenses();
+    getpayment();
     super.onInit();
   }
 
@@ -118,13 +123,13 @@ class ExpensesController extends GetxController {
   }
 
   void editWallet(String value) {
-    if (value == "Expense") {
+    if (value == "Payment") {
       budgetController.currentBudgetController.text =
           (double.parse(budgetController.currentBudgetController.text) -
                   double.parse(valueController.text))
               .toString();
-      budgetController.expenseController.text =
-          (double.parse(budgetController.expenseController.text) +
+      budgetController.paymentController.text =
+          (double.parse(budgetController.paymentController.text) +
                   double.parse(valueController.text))
               .toString();
     } else if (value == "Income") {
@@ -149,6 +154,4 @@ class ExpensesController extends GetxController {
     budgetController.updateBudget();
     budgetController.getBudget();
   }
-
-  
 }

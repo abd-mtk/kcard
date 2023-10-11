@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../../../features/dashboard/presentation/getx/bindings/wallet_charts_binding.dart';
+import '../../../../features/dashboard/presentation/getx/bindings/dashboard_binding.dart';
 import '../../../../features/dashboard/presentation/screens/dashboard_index_screen.dart';
 import '../../../../features/dashboard/presentation/screens/transaction_charts_screen.dart';
 import '../../../../features/dashboard/presentation/screens/wallet_charts_screen.dart';
@@ -10,11 +10,11 @@ List<GetPage<dynamic>> DASHBOARD = [
   GetPage(
       name: DashBoardIndexScreen.routeName,
       page: () => DashBoardIndexScreen(),
-      bindings: [WalletChartsBinding()]),
+      bindings: [DashboardBindging()]),
   GetPage(
       name: WalletChartsScreen.routeName,
       page: () => WalletChartsScreen(),
-      bindings: [WalletChartsBinding()]),
+      bindings: [DashboardBindging()]),
   GetPage(
       name: TransactionChartsScreen.routeName,
       page: () => TransactionChartsScreen()),

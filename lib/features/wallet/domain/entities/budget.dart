@@ -2,13 +2,13 @@ import 'package:equatable/equatable.dart';
 
 class Budget extends Equatable {
   final double currentBudget;
-  final double expenses;
+  final double payment;
   final double income;
   final double debt;
 
   const Budget({
     required this.currentBudget,
-    required this.expenses,
+    required this.payment,
     required this.income,
     required this.debt,
   });
@@ -16,7 +16,7 @@ class Budget extends Equatable {
   @override
   List<Object?> get props => [
         currentBudget,
-        expenses,
+        payment,
         income,
         debt,
       ];

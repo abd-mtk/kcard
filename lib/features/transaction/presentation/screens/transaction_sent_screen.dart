@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
+import '../../../dashboard/presentation/screens/transaction_charts_screen.dart';
 import '../getx/controllers/transaction_controller.dart';
 import '../widgets/trabsaction_sent.dart';
 
 class TransactionSentScreen extends StatelessWidget {
   TransactionSentScreen({super.key});
   static const String routeName = '/transaction/sent';
-  final TransactionController controller = Get.find<TransactionController>();
+  final TransactionController transactionController = Get.find<TransactionController>();
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +22,14 @@ class TransactionSentScreen extends StatelessWidget {
         const Text('Transaction Sent'),
         const Gap(20),
         GetBuilder<TransactionController>(
-          builder: (_) => controller.senttransactions == null
-              ? const Center(child: CircularProgressIndicator())
+          builder: (_) => transactionController.senttransactions == null
+              ? Center(child: ReloadBox(onPressed: transactionController.getTransactions))
               : ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: controller.senttransactions!.length,
+                  itemCount: transactionController.senttransactions!.length,
                   itemBuilder: (context, index) {
-                    final transaction = controller.senttransactions![index];
+                    final transaction = transactionController.senttransactions![index];
                     return TransactionCard(
                       title: 'To : ${transaction.recipient}',
                       value: '- ${transaction.value}',
@@ -62,13 +63,6 @@ class TransactionSentScreen extends StatelessWidget {
                   },
                 ),
         ),
-        // TransactionCard(
-        //   title: 'To Address : Alice',
-        //   value: '- 5000',
-        //   image: 'assets/images/loss.png',
-        //   onTap: () {},
-        //   color: Colors.pink[300],
-        // ),
       ]),
     );
   }

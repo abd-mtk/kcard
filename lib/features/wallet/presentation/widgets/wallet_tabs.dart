@@ -23,7 +23,7 @@ const List<Widget> walletTabs = [
   ),
   Tab(
     icon: Icon(Icons.money_off),
-    child: Text('Expenses',
+    child: Text('Payment',
         style: TextStyle(
           fontSize: 15,
           fontWeight: FontWeight.bold,
@@ -33,7 +33,7 @@ const List<Widget> walletTabs = [
   ),
   Tab(
     icon: Icon(Icons.add),
-    child: Text('Add Expense',
+    child: Text('Add Payment',
         style: TextStyle(
           fontSize: 15,
           fontWeight: FontWeight.bold,

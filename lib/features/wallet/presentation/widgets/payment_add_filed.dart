@@ -4,7 +4,7 @@ import 'package:gap/gap.dart';
 import '../../../../app/utils/constants/style.dart';
 import 'custom_input_field.dart';
 
-class ExpensesAddFiled extends StatelessWidget {
+class PaymentAddFiled extends StatelessWidget {
   final String label;
   final IconData icon;
   final TextEditingController controller;
@@ -12,7 +12,7 @@ class ExpensesAddFiled extends StatelessWidget {
   final int maxLines;
   final int maxChars;
 
-  const ExpensesAddFiled({
+  const PaymentAddFiled({
     Key? key,
     required this.label,
     required this.icon,

@@ -30,8 +30,8 @@ class BudgetDetailsScreen extends StatelessWidget {
                     color: Colors.grey,
                   ),
                   BudgetType(
-                      title: 'Expense',
-                      value: budgetController.budget!.expenses.toString(),
+                      title: 'Payment',
+                      value: budgetController.budget!.payment.toString(),
                       image: 'assets/images/expenses.png',
                       onTap: () {}),
                   const Divider(

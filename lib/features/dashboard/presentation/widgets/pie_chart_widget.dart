@@ -2,15 +2,15 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../getx/controllers/wallet_charts_controller.dart';
+import '../getx/controllers/dashboard_controller.dart';
 
 class PieChartWidget extends StatelessWidget {
   const PieChartWidget({
     super.key,
-    required this.controller,
+    required this.dashboardcontroller,
   });
 
-  final WalletChartsController controller;
+  final DashboardController dashboardcontroller;
 
   @override
   Widget build(BuildContext context) {
@@ -24,22 +24,22 @@ class PieChartWidget extends StatelessWidget {
               sections: [
                 PieChartSectionData(
                   color: Colors.green,
-                  value: controller.incomevalues.length.toDouble(),
-                  title: 'Income ${controller.budget!.income}',
+                  value: dashboardcontroller.incomevalues.length.toDouble(),
+                  title: 'Income ${dashboardcontroller.budget!.income}',
                   radius: 100,
                   titlePositionPercentageOffset: 0.7,
                 ),
                 PieChartSectionData(
                   color: Colors.red,
-                  value: controller.expensevalues.length.toDouble(),
-                  title: 'Expense ${controller.budget!.expenses}',
+                  value: dashboardcontroller.paymentvalues.length.toDouble(),
+                  title: 'Payment ${dashboardcontroller.budget!.payment}',
                   radius: 100,
                   titlePositionPercentageOffset: 0.7,
                 ),
                 PieChartSectionData(
                   color: Colors.blue,
-                  value: controller.debtvalues.length.toDouble(),
-                  title: 'Debt ${controller.budget!.debt}',
+                  value: dashboardcontroller.debtvalues.length.toDouble(),
+                  title: 'Debt ${dashboardcontroller.budget!.debt}',
                   radius: 100,
                   titlePositionPercentageOffset: 0.7,
                 ),

@@ -29,9 +29,9 @@ class BudgetEditScreen extends StatelessWidget {
           keyboardType: TextInputType.number,
         ),
         EditBudgetFiled(
-          label: 'Expense',
+          label: 'Payment',
           icon: Iconsax.money_send,
-          controller: budgetController.expenseController,
+          controller: budgetController.paymentController,
           keyboardType: TextInputType.number,
         ),
         EditBudgetFiled(

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../domain/entities/expenses.dart';
+import '../../domain/entities/payment.dart';
 
-class ExpensesCard extends StatelessWidget {
-  final Expenses expenses;
+class PaymentCard extends StatelessWidget {
+  final Payment payment;
   final String? image;
 
-  const ExpensesCard({
+  const PaymentCard({
     Key? key,
-    required this.expenses,
+    required this.payment,
     this.image,
   }) : super(key: key);
 
@@ -29,9 +29,9 @@ class ExpensesCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("${expenses.category} : ",
+                  Text("${payment.category} : ",
                       style: const TextStyle(fontSize: 18)),
-                  Text(expenses.title, style: const TextStyle(fontSize: 18)),
+                  Text(payment.title, style: const TextStyle(fontSize: 18)),
                   const Spacer(),
                   image != null ? Image.asset(image!, height: 30) : Container(),
                 ],
@@ -39,13 +39,13 @@ class ExpensesCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Time : ${expenses.date.toString().split(' ')[0]}",
+                  Text("Time : ${payment.date.toString().split(' ')[0]}",
                       style: const TextStyle(fontSize: 18)),
                 ],
               ),
               Row(
                 children: [
-                  Text("Value : ${expenses.value}",
+                  Text("Value : ${payment.value}",
                       style: const TextStyle(fontSize: 18)),
                 ],
               ),
@@ -54,7 +54,7 @@ class ExpensesCard extends StatelessWidget {
                   SizedBox(
                     width: Get.width * 0.8,
                     child: Text(
-                      "Note : ${expenses.note}",
+                      "Note : ${payment.note}",
                       style: const TextStyle(fontSize: 18),
                     ),
                   ),

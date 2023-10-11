@@ -3,25 +3,25 @@ import '../../domain/entities/budget.dart';
 class BudgetModel extends Budget {
   const BudgetModel(
       {required super.currentBudget,
-      required super.expenses,
+      required super.payment,
       required super.income,
       required super.debt});
 
   factory BudgetModel.fromJson(Map<String, dynamic> json) => BudgetModel(
       currentBudget: json['currentBudget'],
-      expenses: json['expenses'],
+      payment: json['payment'],
       income: json['income'],
       debt: json['debt']);
 
   factory BudgetModel.fromEntity(Budget budget) => BudgetModel(
       currentBudget: budget.currentBudget,
-      expenses: budget.expenses,
+      payment: budget.payment,
       income: budget.income,
       debt: budget.debt);
 
   Map<String, dynamic> toJson() => {
         'currentBudget': currentBudget,
-        'expenses': expenses,
+        'payment': payment,
         'income': income,
         'debt': debt
       };
