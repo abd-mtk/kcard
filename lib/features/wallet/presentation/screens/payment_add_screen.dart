@@ -53,13 +53,14 @@ class PaymentAddScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             elevation: 2,
+            backgroundColor: Colors.pink[900],
           ),
           child: SizedBox(
-            width: Get.width * 0.3,
+            width: MediaQuery.of(context).size.width * 0.3,
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Add Payment'),
+                Text('Edit Budget'),
                 Icon(Iconsax.wallet_add_1),
               ],
             ),

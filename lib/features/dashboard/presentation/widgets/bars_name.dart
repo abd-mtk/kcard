@@ -25,9 +25,7 @@ class BarsName extends StatelessWidget {
             Text(
               'Sent',
               style: TextStyle(
-                color: Colors.black,
                 fontSize: 15,
-                fontWeight: FontWeight.bold,
               ),
             ),
           ],
@@ -47,9 +45,7 @@ class BarsName extends StatelessWidget {
             Text(
               'Received',
               style: TextStyle(
-                color: Colors.black,
                 fontSize: 15,
-                fontWeight: FontWeight.bold,
               ),
             ),
           ],

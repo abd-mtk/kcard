@@ -15,26 +15,39 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          GetBuilder<ProfileController>(builder: (_) {
-            return profileController.user != null
-                ? ProfileCrad(
-                    jobtype: profileController.user!.workingmode,
-                    salary: profileController.user!.salary,
-                    curranecy:
-                        "${profileController.user!.curranecy} / ${profileController.user!.receipt}",
-                    username: profileController.user!.name,
-                    jobtitle: profileController.user!.jobtitle,
-                    // experience: '2 years',
-                  )
-                : ReloadBox(onPressed: profileController.getUserInformation);
-          }),
-          const Divider(thickness: 2),
-          const Gap(100),
-          const ProfileButtons(),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              profileController.getUserInformation();
+            },
+            icon: const Icon(Icons.refresh),
+          )
         ],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            GetBuilder<ProfileController>(builder: (_) {
+              return profileController.user != null
+                  ? ProfileCrad(
+                      jobtype: profileController.user!.workingmode,
+                      salary: profileController.user!.salary,
+                      curranecy:
+                          "${profileController.user!.curranecy} / ${profileController.user!.receipt}",
+                      username: profileController.user!.name,
+                      jobtitle: profileController.user!.jobtitle,
+                      // experience: '2 years',
+                    )
+                  : ReloadBox(onPressed: profileController.getUserInformation);
+            }),
+            const Divider(thickness: 2),
+            const Gap(100),
+            const ProfileButtons(),
+          ],
+        ),
       ),
     );
   }

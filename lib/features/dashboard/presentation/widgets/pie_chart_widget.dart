@@ -28,6 +28,10 @@ class PieChartWidget extends StatelessWidget {
                   title: 'Income ${dashboardcontroller.budget!.income}',
                   radius: 100,
                   titlePositionPercentageOffset: 0.7,
+                  titleStyle: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 PieChartSectionData(
                   color: Colors.red,
@@ -35,6 +39,10 @@ class PieChartWidget extends StatelessWidget {
                   title: 'Payment ${dashboardcontroller.budget!.payment}',
                   radius: 100,
                   titlePositionPercentageOffset: 0.7,
+                  titleStyle: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 PieChartSectionData(
                   color: Colors.blue,
@@ -42,6 +50,10 @@ class PieChartWidget extends StatelessWidget {
                   title: 'Debt ${dashboardcontroller.budget!.debt}',
                   radius: 100,
                   titlePositionPercentageOffset: 0.7,
+                  titleStyle: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
               centerSpaceRadius: 0,
@@ -56,8 +68,7 @@ class PieChartWidget extends StatelessWidget {
           child: Text(
             'Wallet',
             style: TextStyle(
-              color: Colors.black,
-              fontSize: 15,
+              fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
           ),

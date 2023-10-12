@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kcard/app/utils/constants/reloaad_box.dart';
 
 import '../getx/controllers/dashboard_controller.dart';
 import '../widgets/chart_container.dart';
@@ -24,7 +25,6 @@ class WalletChartsScreen extends StatelessWidget {
                       child: Container(
                         height: Get.height * 0.35,
                         decoration: BoxDecoration(
-                          color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(
                             color: Colors.grey.withOpacity(0.4),
@@ -58,32 +58,7 @@ class WalletChartsScreen extends StatelessWidget {
                   ),
                 ],
               )
-            : SizedBox(
-                height: Get.height * 0.4,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'No data',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.purple,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(32.0),
-                          ),
-                        ),
-                        onPressed: () => dashboardcontroller.getDashboard(),
-                        icon: const Icon(Icons.refresh),
-                        label: const Text('Refresh'))
-                  ],
-                ),
-              );
+            : ReloadBox(onPressed: dashboardcontroller.getDashboard);
       }),
     );
   }

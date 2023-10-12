@@ -38,29 +38,19 @@ class BudgetType extends StatelessWidget {
                 left: 10,
                 child: Text(
                   title,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: const TextStyle(fontSize: 18),
                 ),
               ),
               Positioned(
                 top: 60,
                 left: 10,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.grey[300],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        top: 5, bottom: 5, left: 20, right: 20),
-                    child: Text(
-                      value,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      top: 5, bottom: 5, left: 20, right: 20),
+                  child: Text(
+                    value,
+                    style: const TextStyle(
+                      fontSize: 18,
                     ),
                   ),
                 ),

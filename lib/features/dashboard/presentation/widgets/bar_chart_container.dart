@@ -20,7 +20,6 @@ class BarchartContainer extends StatelessWidget {
       child: Container(
         height: Get.height * 0.45,
         decoration: BoxDecoration(
-          color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: Colors.grey.withOpacity(0.4),
@@ -45,8 +44,7 @@ class BarchartContainer extends StatelessWidget {
                 Text(
                   'Transactions Count',
                   style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

@@ -1,27 +1,63 @@
 import 'package:flutter/material.dart';
 
-ThemeData darkYellowTheme = ThemeData(
+ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
-  primaryColor: Colors.amber,
-  hintColor: Colors.yellow,
-  scaffoldBackgroundColor: Colors.black,
-  cardColor: Colors.amberAccent,
+  primaryColor: Colors.purple,
+  hintColor: Colors.blueGrey[800],
+  scaffoldBackgroundColor: Colors.blueGrey[800],
+  cardColor: Colors.blueGrey[800],
+  fontFamily: 'Aref_Ruqaa_Ink',
   textTheme: const TextTheme(
-    bodyLarge: TextStyle(color: Colors.white70, fontFamily: 'Aref_Ruqaa_Ink'),
-    bodyMedium: TextStyle(color: Colors.white70, fontFamily: 'Aref_Ruqaa_Ink'),
+    bodyLarge: TextStyle(
+        fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+    bodyMedium: TextStyle(
+        fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
     displayLarge: TextStyle(
-        color: Colors.white, fontSize: 24, fontFamily: 'Aref_Ruqaa_Ink'),
+        color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
     displayMedium: TextStyle(
-        color: Colors.white, fontSize: 20, fontFamily: 'Aref_Ruqaa_Ink'),
+        color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
     displaySmall: TextStyle(
-        color: Colors.white, fontSize: 16, fontFamily: 'Aref_Ruqaa_Ink'),
+        color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+    labelLarge: TextStyle(
+        color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
   ),
-  appBarTheme: const AppBarTheme(
-    backgroundColor: Colors.amber,
-    foregroundColor: Colors.black,
+  appBarTheme: AppBarTheme(
+    backgroundColor: Colors.purple[700],
+    foregroundColor: Colors.white,
+    centerTitle: true,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        bottom: Radius.circular(20),
+      ),
+    ),
+    toolbarTextStyle: const TextStyle(
+      color: Colors.white,
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+    ),
+    titleTextStyle: const TextStyle(
+      color: Colors.white,
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+    ),
   ),
-  buttonTheme: const ButtonThemeData(
-    buttonColor: Colors.amberAccent,
+  buttonTheme: ButtonThemeData(
+    buttonColor: Colors.purple[700],
     textTheme: ButtonTextTheme.primary,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
+  ),
+  iconTheme: const IconThemeData(
+    color: Colors.teal,
+    weight: 12,
+    shadows: [
+      Shadow(
+        color: Colors.black,
+        blurRadius: 2,
+        offset: Offset(1, 1),
+      ),
+    ],
+    size: 24,
   ),
 );

@@ -21,7 +21,6 @@ class ChartContainer extends StatelessWidget {
       child: Container(
         height: Get.height * 0.35,
         decoration: BoxDecoration(
-          color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: Colors.grey.withOpacity(0.4),
@@ -45,9 +44,7 @@ class ChartContainer extends StatelessWidget {
                 Text(
                   title,
                   style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
                   ),
                 ),
               ],

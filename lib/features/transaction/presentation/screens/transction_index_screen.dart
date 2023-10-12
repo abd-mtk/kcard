@@ -10,35 +10,42 @@ class TransactionIndexScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      animationDuration: const Duration(milliseconds: 500),
-      length: 3,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                ButtonsTabBar(
-                  splashColor: Colors.purple[300],
-                  backgroundColor: Colors.purple[500],
-                  unselectedBackgroundColor: Colors.grey[500],
-                  unselectedLabelStyle: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Transaction'),
+      ),
+      body: DefaultTabController(
+        animationDuration: const Duration(milliseconds: 500),
+        length: 3,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  ButtonsTabBar(
+                    splashColor: Colors.purple[300],
+                    backgroundColor: Colors.purple[500],
+                    unselectedBackgroundColor: Colors.grey[500],
+                    unselectedLabelStyle: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    labelStyle: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                    radius: 10,
+                    tabs: transactionTabs,
                   ),
-                  labelStyle:
-                      const TextStyle(color: Colors.white, fontSize: 16),
-                  radius: 10,
-                  tabs: transactionTabs,
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          const TransactionTabsView()
-        ],
+            const TransactionTabsView()
+          ],
+        ),
       ),
     );
   }

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 
+import '../getx/controllers/setting_controller.dart';
 import '../widgets/setting_option.dart';
 
 class SettingScreen extends StatelessWidget {
-  const SettingScreen({super.key});
+  SettingScreen({super.key});
   static const String routeName = '/setting';
+  final SettingController settingController = Get.put(SettingController());
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +36,12 @@ class SettingScreen extends StatelessWidget {
               SettingOption(
                 option: 'Theme',
                 icon: Iconsax.sun,
-                onTap: () {},
+                onTap: () {
+                  settingController.changeTheme(
+                      settingController.currentTheme == settingController.light
+                          ? settingController.dark
+                          : settingController.light);
+                },
               ),
               const Divider(
                   thickness: 2,

@@ -21,13 +21,11 @@ class TransactionEditScreen extends StatelessWidget {
           color: Colors.grey,
         ),
         const Gap(20),
-        const Text('Transaction Type', style: TextStyle(fontSize: 18)),
-        const Divider(
-          color: Colors.black,
-        ),
+        const Text('Transaction Type', style: TextStyle(fontSize: 16)),
+        
         TransactionType(
-          type: controller.transactionType,
-          resipient: controller.transactionrecipient,
+          type: controller.transactionType ,
+          resipient: controller.transactionrecipient ,
         ),
         EditTransctionFiled(
           label: 'Transaction Title',

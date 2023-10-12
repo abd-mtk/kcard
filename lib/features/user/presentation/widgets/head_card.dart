@@ -53,7 +53,6 @@ class HeadCard extends StatelessWidget {
                     ? Get.width * 0.35
                     : Get.width * 0.3,
                 decoration: const BoxDecoration(
-                  color: Colors.white,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(50),
                     bottomRight: Radius.circular(5),

@@ -13,35 +13,49 @@ class WalletIndexScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      animationDuration: const Duration(milliseconds: 500),
-      length: 4,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                ButtonsTabBar(
-                  splashColor: Colors.purple[300],
-                  backgroundColor: Colors.purple[500],
-                  unselectedBackgroundColor: Colors.grey[500],
-                  unselectedLabelStyle: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  labelStyle:
-                      const TextStyle(color: Colors.white, fontSize: 16),
-                  radius: 15,
-                  tabs: walletTabs,
-                ),
-              ],
-            ),
-          ),
-          const WalletTabsView()
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Wallet'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              budgetController.getBudget();
+            },
+            icon: const Icon(Icons.refresh),
+          )
         ],
+      ),
+      body: DefaultTabController(
+        animationDuration: const Duration(milliseconds: 500),
+        length: 4,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  ButtonsTabBar(
+                    splashColor: Colors.purple[300],
+                    backgroundColor: Colors.purple[500],
+                    unselectedBackgroundColor: Colors.grey[500],
+                    unselectedLabelStyle: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    labelStyle: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                    radius: 10,
+                    tabs: walletTabs,
+                  ),
+                ],
+              ),
+            ),
+            const WalletTabsView()
+          ],
+        ),
       ),
     );
   }

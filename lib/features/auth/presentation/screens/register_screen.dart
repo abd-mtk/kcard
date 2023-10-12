@@ -6,11 +6,11 @@ import '../getx/controllers/auth_controller.dart';
 import '../widgets/input_field.dart';
 import '../widgets/logo.dart';
 
-// ignore: must_be_immutable
+
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({super.key});
   static const String routeName = '/registerScreen';
-  AuthController controller = Get.find<AuthController>();
+  final AuthController controller = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,6 @@ class RegisterScreen extends StatelessWidget {
                   child: const Text(
                     'انشاء حساب',
                     style: TextStyle(
-                      color: Colors.white,
                       fontSize: 20,
                     ),
                   ),

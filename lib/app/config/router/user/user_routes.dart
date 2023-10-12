@@ -24,6 +24,6 @@ List<GetPage<dynamic>> USER = [
   ),
   GetPage(
     name: SettingScreen.routeName,
-    page: () => const SettingScreen(),
+    page: () => SettingScreen(),
   ),
 ];

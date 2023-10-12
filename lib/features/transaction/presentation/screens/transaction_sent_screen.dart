@@ -48,7 +48,7 @@ class TransactionSentScreen extends StatelessWidget {
                             'Date : ${transaction.date}\n',
                             style: const TextStyle(
                               fontSize: 16,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                           actions: [
@@ -57,11 +57,10 @@ class TransactionSentScreen extends StatelessWidget {
                               child: const Text('Close'),
                             ),
                           ],
-                          backgroundColor: Colors.pink[100],
                           barrierDismissible: true,
                         );
                       },
-                      color: Colors.pink[300],
+                      color: Colors.red.withOpacity(0.8),
                       date: transaction.date,
                     );
                   },

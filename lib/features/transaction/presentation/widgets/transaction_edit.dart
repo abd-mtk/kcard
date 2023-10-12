@@ -28,7 +28,6 @@ class EditTransctionFiled extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
@@ -38,8 +37,7 @@ class EditTransctionFiled extends StatelessWidget {
               const Gap(10),
               Text(
                 label,
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 16),
               ),
             ],
           ),

@@ -23,37 +23,39 @@ class ProfileCrad extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          color: Colors.black38,
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(15),
-            bottomRight: Radius.circular(15),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            color: Colors.black38,
+            borderRadius: BorderRadius.all(
+              Radius.circular(15),
+            ),
           ),
-        ),
-        child:  Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              HeadCard(
-                jobtype: jobtype,
-                salary: salary,
-                curranecy: curranecy,
-              ),
-              const Divider(
-                thickness: 2,
-                color: Colors.white70,
-                endIndent: 5,
-                indent: 5,
-              ),
-              BodyCard(
-                username: username,
-                jobtitle: jobtitle,
-                experience: experience,
-              ),
-            ],
-          ),
-        ));
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                HeadCard(
+                  jobtype: jobtype,
+                  salary: salary,
+                  curranecy: curranecy,
+                ),
+                const Divider(
+                  thickness: 2,
+                  color: Colors.white70,
+                  endIndent: 5,
+                  indent: 5,
+                ),
+                BodyCard(
+                  username: username,
+                  jobtitle: jobtitle,
+                  experience: experience,
+                ),
+              ],
+            ),
+          )),
+    );
   }
 }

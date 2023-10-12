@@ -32,7 +32,6 @@ class CustomBottomNavigtionbBar extends StatelessWidget {
             duration: const Duration(milliseconds: 200),
             gap: 5,
             color: Colors.grey[800],
-            activeColor: Colors.green,
             iconSize: 25,
             tabBackgroundColor: Colors.white.withOpacity(0.2),
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),

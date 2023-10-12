@@ -52,7 +52,6 @@ class TransactionReceivedScreen extends StatelessWidget {
                               child: const Text('Close'),
                             ),
                           ],
-                          backgroundColor: Colors.teal[100],
                           barrierDismissible: true,
                         );
                       },

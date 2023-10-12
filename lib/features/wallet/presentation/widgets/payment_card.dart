@@ -19,8 +19,7 @@ class PaymentCard extends StatelessWidget {
       padding: const EdgeInsets.all(4.0),
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.grey[200],
-            border: Border.all(color: Colors.grey),
+            color: Colors.white.withOpacity(0.2),
             borderRadius: BorderRadius.circular(10)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),

@@ -1,19 +1,22 @@
+import '../../features/user/presentation/getx/controllers/setting_controller.dart';
 import '../config/router/router.dart';
 import 'imports.dart';
 
 class KCardApp extends StatelessWidget {
-  const KCardApp({super.key});
+  KCardApp({super.key});
+
+  final SettingController settingController = Get.put(SettingController());
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: lightGreenTheme,
-      darkTheme: darkYellowTheme,
-      themeMode: ThemeMode.light,
-      initialRoute: WelcomeScreen.routeName,
-      initialBinding: AuthBinding(),
-      getPages: ROUTER,
-    );
+    return GetBuilder<SettingController>(builder: (_) {
+      return GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: settingController.currentTheme,
+        initialRoute: WelcomeScreen.routeName,
+        initialBinding: AuthBinding(),
+        getPages: ROUTER,
+      );
+    });
   }
 }

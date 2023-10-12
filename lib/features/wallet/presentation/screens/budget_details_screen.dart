@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kcard/app/utils/constants/reloaad_box.dart';
 
 import '../getx/controllers/budget_controller.dart';
 import '../widgets/budget_type.dart';
@@ -22,10 +23,12 @@ class BudgetDetailsScreen extends StatelessWidget {
                     color: Colors.grey,
                   ),
                   BudgetType(
-                      title: 'Current Budget',
-                      value: budgetController.budget!.currentBudget.toString(),
-                      image: 'assets/images/budget2.png',
-                      onTap: () {}),
+                    title: 'Current Budget',
+                    value: budgetController.budget!.currentBudget.toString(),
+                    image: 'assets/images/budget2.png',
+                    onTap: () {},
+                    color: Colors.green[800],
+                  ),
                   const Divider(
                     color: Colors.grey,
                   ),
@@ -33,7 +36,8 @@ class BudgetDetailsScreen extends StatelessWidget {
                       title: 'Payment',
                       value: budgetController.budget!.payment.toString(),
                       image: 'assets/images/expenses.png',
-                      onTap: () {}),
+                      onTap: () {},
+                      color: Colors.red[700]),
                   const Divider(
                     color: Colors.grey,
                   ),
@@ -41,7 +45,8 @@ class BudgetDetailsScreen extends StatelessWidget {
                       title: 'Incom',
                       value: budgetController.budget!.income.toString(),
                       image: 'assets/images/income.png',
-                      onTap: () {}),
+                      onTap: () {},
+                      color: Colors.blue[700]),
                   const Divider(
                     color: Colors.grey,
                   ),
@@ -49,16 +54,15 @@ class BudgetDetailsScreen extends StatelessWidget {
                       title: 'Debt',
                       value: budgetController.budget!.debt.toString(),
                       image: 'assets/images/debt.png',
-                      onTap: () {}),
+                      onTap: () {},
+                      color: Colors.orange[700]),
                   const Divider(
                     color: Colors.grey,
                   ),
                 ],
               ),
             )
-          : const Center(
-              child: CircularProgressIndicator(),
-            );
+          : ReloadBox(onPressed: budgetController.getBudget);
     });
   }
 }

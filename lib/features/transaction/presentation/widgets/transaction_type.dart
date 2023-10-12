@@ -22,6 +22,7 @@ class TransactionType extends StatefulWidget {
 }
 
 class _TransactionTypeState extends State<TransactionType> {
+  bool send = true;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,12 +30,12 @@ class _TransactionTypeState extends State<TransactionType> {
         ToggleSwitch(
           minWidth: 150.0,
           minHeight: 50.0,
-          initialLabelIndex: widget.type.text == 'Send' ? 0 : 1,
+          initialLabelIndex: send ? 0 : 1,
           cornerRadius: 20.0,
           changeOnTap: false,
           doubleTapDisable: false,
           activeFgColor: Colors.white,
-          inactiveBgColor: Colors.grey[500],
+          // inactiveBgColor: Colors.grey[500],
           inactiveFgColor: Colors.white,
           totalSwitches: 2,
           animationDuration: 50,
@@ -45,8 +46,8 @@ class _TransactionTypeState extends State<TransactionType> {
           labels: const ['Send', 'Receive'],
           iconSize: 30.0,
           activeBgColors: [
-            [Colors.green[700]!, Colors.green],
-            [Colors.pink[300]!, Colors.pink]
+            [Colors.green[900]!, Colors.green],
+            [Colors.red[900]!, Colors.pink]
           ],
           animate: true,
           curve: Curves
@@ -55,16 +56,16 @@ class _TransactionTypeState extends State<TransactionType> {
             setState(() {
               if (index == 0) {
                 widget.type.text = "Send";
-                widget.isSend = true;
+                send = true;
               } else {
                 widget.type.text = "Receive";
-                widget.isSend = false;
+                send = false;
               }
             });
           },
         ),
         const Gap(20),
-        widget.isSend
+        send
             ? EditTransctionFiled(
                 label: 'Send To',
                 icon: Iconsax.send_square,
@@ -72,7 +73,7 @@ class _TransactionTypeState extends State<TransactionType> {
                 keyboardType: TextInputType.text,
               )
             : const SizedBox(),
-        !widget.isSend
+        !send
             ? EditTransctionFiled(
                 label: 'Receive From',
                 icon: Iconsax.receive_square,

@@ -57,6 +57,7 @@ class BudgetEditScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             elevation: 2,
+            backgroundColor: Colors.pink[900],
           ),
           child: SizedBox(
             width: MediaQuery.of(context).size.width * 0.3,

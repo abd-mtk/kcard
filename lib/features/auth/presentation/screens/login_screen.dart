@@ -7,12 +7,11 @@ import '../widgets/input_field.dart';
 import '../widgets/logo.dart';
 import 'register_screen.dart';
 
-// ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
+  LoginScreen({super.key});
   static const routeName = '/loginScreen';
 
-  AuthController controller = Get.find<AuthController>();
-  LoginScreen({super.key});
+  final AuthController controller = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
