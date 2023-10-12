@@ -12,6 +12,7 @@ class CustomInputField extends StatefulWidget {
   final TextDirection textDirection;
   final TextAlign textAlign;
   final InputDecoration decoration;
+  final TextInputType keyboardType;
 
   const CustomInputField({
     Key? key,
@@ -24,11 +25,17 @@ class CustomInputField extends StatefulWidget {
     this.textDirection = TextDirection.ltr,
     this.textAlign = TextAlign.left,
     this.decoration = const InputDecoration(
-      border: border,
-      contentPadding: EdgeInsets.symmetric(horizontal: 4),
-      focusedBorder: focusedBorder,
-      disabledBorder: disabledBorder,
-    ),
+        border: border,
+        contentPadding: EdgeInsets.symmetric(horizontal: 4),
+        focusedBorder: focusedBorder,
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderSide: BorderSide(
+            color: Colors.blue,
+            width: 2,
+          ),
+        )),
+    this.keyboardType = TextInputType.text,
   }) : super(key: key);
 
   @override
@@ -55,6 +62,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
         maxLines: widget.maxLines,
         maxLength: widget.maxChars,
         textAlign: widget.textAlign,
+        keyboardType: widget.keyboardType,
         decoration: widget.decoration.copyWith(
           hintTextDirection: widget.textDirection,
           suffixIcon: widget.isPassword
@@ -70,6 +78,17 @@ class _CustomInputFieldState extends State<CustomInputField> {
               : null,
           prefixIcon:
               widget.prefixIcon != null ? Icon(widget.prefixIcon) : null,
+          enabledBorder: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderSide: BorderSide(
+              color: Colors.grey,
+              width: 2,
+            ),
+          ),
+        ),
+        style: const TextStyle(
+          fontSize: 16,
+          color: Colors.black,
         ),
       ),
     );

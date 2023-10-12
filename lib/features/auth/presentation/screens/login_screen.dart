@@ -3,7 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../getx/controllers/auth_controller.dart';
-import '../widgets/input_field.dart';
+import '../widgets/auth_input.dart';
 import '../widgets/logo.dart';
 import 'register_screen.dart';
 
@@ -16,26 +16,32 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Login', style: TextStyle(color: Colors.white)),
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const Gap(20),
             Logo(
               image: "assets/images/login.png",
             ),
             const Gap(50),
             GetBuilder<AuthController>(builder: (_) {
-              return CustomInputField(
+              return AuthInput(
                 controller: controller.emailController,
-                suffixIcon: Icons.email,
                 isPassword: false,
+                label: 'Email',
+                icon: Icons.email,
               );
             }),
             GetBuilder<AuthController>(builder: (_) {
-              return CustomInputField(
+              return AuthInput(
                 controller: controller.passwordController,
-                suffixIcon: Icons.lock,
                 isPassword: true,
+                label: 'Password',
+                icon: Icons.lock,
               );
             }),
             Padding(
@@ -51,8 +57,10 @@ class LoginScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
+                    backgroundColor: Theme.of(context).primaryColor,
                   ),
-                  child: const Text('تسجيل الدخول'),
+                  child: const Text('Login',
+                      style: TextStyle(color: Colors.white)),
                 ),
               ),
             ),
@@ -60,16 +68,17 @@ class LoginScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const Text(
+                  'Don\'t have an account?',
+                  style: TextStyle(fontSize: 16),
+                ),
                 TextButton(
                   onPressed: () {
                     Get.toNamed(RegisterScreen.routeName);
                   },
                   child: const Text(
-                    'انشاء حساب ',
+                    'Register Now',
                   ),
-                ),
-                const Text(
-                  'ليس لديك حساب؟',
                 ),
               ],
             ),

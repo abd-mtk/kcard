@@ -12,25 +12,28 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Welcome", style: TextStyle(color: Colors.white)),
+      ),
       body: IntroductionScreen(
         bodyPadding: const EdgeInsets.all(10),
         dotsDecorator: DotsDecorator(
           size: const Size.square(10.0),
           activeSize: const Size(20.0, 10.0),
-          activeColor: Theme.of(context).colorScheme.primary,
-          color: Theme.of(context).colorScheme.secondary,
           spacing: const EdgeInsets.symmetric(horizontal: 3.0),
           activeShape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25.0),
+            borderRadius: BorderRadius.circular(20.0),
           ),
         ),
         curve: Curves.easeInCubic,
-        globalBackgroundColor: Colors.white,
+        globalBackgroundColor: Colors.white70,
         pages: introductionList,
         showSkipButton: true,
         showNextButton: false,
-        skip: const Text("تخطي", style: TextStyle(color: Colors.black)),
-        done: const Text("اكمال", style: TextStyle(color: Colors.black)),
+        skip: const Text(
+          "Skip",
+        ),
+        done: const Text("Done"),
         onDone: () {
           Get.offNamed(LoginScreen.routeName);
         },

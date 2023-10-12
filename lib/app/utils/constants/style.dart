@@ -10,7 +10,10 @@ const OutlineInputBorder disabledBorder = OutlineInputBorder(
     borderRadius: BorderRadius.all(
       Radius.circular(15),
     ),
-    borderSide: BorderSide());
+    borderSide: BorderSide(
+      color: Colors.blue,
+      width: 2,
+    ));
 
 const OutlineInputBorder focusedBorder = OutlineInputBorder(
     borderRadius: BorderRadius.all(

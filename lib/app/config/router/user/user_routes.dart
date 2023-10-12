@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+import 'package:kcard/app/init/imports.dart';
 
 import '../../../../features/user/presentation/getx/bindings/edit_profile_binding.dart';
 import '../../../../features/user/presentation/getx/bindings/profile_binding.dart';
@@ -11,9 +11,7 @@ List<GetPage<dynamic>> USER = [
   GetPage(
     name: ProfileScreen.routeName,
     page: () => ProfileScreen(),
-    bindings: [
-      ProfileBinding(),
-    ],
+    bindings: [ProfileBinding(), AuthBinding()],
   ),
   GetPage(
     name: EditProfileScreen.routeName,

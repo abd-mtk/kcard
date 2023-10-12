@@ -3,9 +3,8 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../getx/controllers/auth_controller.dart';
-import '../widgets/input_field.dart';
+import '../widgets/auth_input.dart';
 import '../widgets/logo.dart';
-
 
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({super.key});
@@ -15,6 +14,9 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Register', style: TextStyle(color: Colors.white)),
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -24,17 +26,19 @@ class RegisterScreen extends StatelessWidget {
             ),
             const Gap(50),
             GetBuilder<AuthController>(builder: (_) {
-              return CustomInputField(
+              return AuthInput(
                 controller: controller.emailController,
-                suffixIcon: Icons.email,
                 isPassword: false,
+                label: 'Email',
+                icon: Icons.email,
               );
             }),
             GetBuilder<AuthController>(builder: (_) {
-              return CustomInputField(
+              return AuthInput(
                 controller: controller.passwordController,
-                suffixIcon: Icons.lock,
                 isPassword: true,
+                label: 'Password',
+                icon: Icons.lock,
               );
             }),
             Padding(
@@ -50,11 +54,12 @@ class RegisterScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
+                    backgroundColor: Theme.of(context).primaryColor,
                   ),
                   child: const Text(
-                    'انشاء حساب',
+                    'Create an account',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 16,
                     ),
                   ),
                 ),
