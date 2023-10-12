@@ -73,6 +73,13 @@ class _CustomInputFieldState extends State<CustomInputField> {
               : null,
           prefixIcon:
               widget.prefixIcon != null ? Icon(widget.prefixIcon) : null,
+          enabledBorder: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderSide: BorderSide(
+              color: Colors.grey,
+              width: 2,
+            ),
+          ),
         ),
       ),
     );

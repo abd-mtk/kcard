@@ -19,7 +19,8 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Edit Profile'),
+          title:
+              const Text('Edit Profile', style: TextStyle(color: Colors.white)),
           actions: [
             GetBuilder<EditProfileController>(builder: (_) {
               return IconButton(
@@ -28,7 +29,10 @@ class EditProfileScreen extends StatelessWidget {
 
                   profileController.getUserInformation();
                 },
-                icon: const Icon(Icons.done),
+                icon: const Icon(
+                  Icons.done,
+                  color: Colors.white,
+                ),
               );
             })
           ],
