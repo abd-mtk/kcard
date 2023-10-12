@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../dashboard/presentation/screens/transaction_charts_screen.dart';
+import '../../../../app/utils/constants/reloaad_box.dart';
 import '../getx/controllers/transaction_controller.dart';
 import '../widgets/trabsaction_sent.dart';
 
 class TransactionSentScreen extends StatelessWidget {
   TransactionSentScreen({super.key});
   static const String routeName = '/transaction/sent';
-  final TransactionController transactionController = Get.find<TransactionController>();
+  final TransactionController transactionController =
+      Get.find<TransactionController>();
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +24,16 @@ class TransactionSentScreen extends StatelessWidget {
         const Gap(20),
         GetBuilder<TransactionController>(
           builder: (_) => transactionController.senttransactions == null
-              ? Center(child: ReloadBox(onPressed: transactionController.getTransactions))
+              ? Center(
+                  child: ReloadBox(
+                      onPressed: transactionController.getTransactions))
               : ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: transactionController.senttransactions!.length,
                   itemBuilder: (context, index) {
-                    final transaction = transactionController.senttransactions![index];
+                    final transaction =
+                        transactionController.senttransactions![index];
                     return TransactionCard(
                       title: 'To : ${transaction.recipient}',
                       value: '- ${transaction.value}',

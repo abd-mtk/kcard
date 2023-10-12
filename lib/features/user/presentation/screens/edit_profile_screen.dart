@@ -95,9 +95,9 @@ class EditProfileScreen extends StatelessWidget {
               : SizedBox(
                   height: 200,
                   child: Center(
-                    child: LoadingAnimationWidget.threeRotatingDots(
-                      color: Colors.blue,
-                      size: 25,
+                    child: LoadingAnimationWidget.inkDrop(
+                      color: Colors.purple,
+                      size: 40,
                     ),
                   ),
                 );

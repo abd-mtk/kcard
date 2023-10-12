@@ -35,8 +35,13 @@ class AuthRemoteDataSourceImplement implements AuthRemoteDataSource {
 
   @override
   Future<Unit> logout() async {
-    await FirebaseAuth.instance.signOut();
-    return Future.value(unit);
+    try {
+      await FirebaseAuth.instance.currentUser?.reload();
+      await FirebaseAuth.instance.signOut();
+      return Future.value(unit);
+    } on FirebaseAuthException {
+      throw AuthServerException;
+    }
   }
 
   @override

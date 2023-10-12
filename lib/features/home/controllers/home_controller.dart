@@ -17,7 +17,6 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
-    print('HomeController onInit');
     super.onInit();
   }
 }
